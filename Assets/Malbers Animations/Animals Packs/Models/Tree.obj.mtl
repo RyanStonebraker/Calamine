@@ -1,0 +1,21 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.187496374)
+
+newmtl _lowpolytreeLeaves
+Kd 0.0352941 0.215686 0
+Ka 0.0352941 0.215686 0
+Ks 0 0 0
+Ke 0 0 0
+d 1
+Ns 2
+illum 2
+
+newmtl 02 - Default
+Kd 0.321569 0.262745 0.133333
+Ka 0.321569 0.262745 0.133333
+Ks 0 0 0
+Ke 0 0 0
+d 1
+Ns 2
+illum 2
+

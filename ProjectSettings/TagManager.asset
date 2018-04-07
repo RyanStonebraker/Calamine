@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Laser
+  - Enemy
+  - Water
+  - Fire
+  - FxTemporaire
+  - projectile
+  - TeleportIgnore
+  - Node0
+  - Node1
+  - Node2
+  - Node3
+  - Node4
+  - IfNode
+  - IfBlock
+  - RowJ
+  - RowB
+  - RowD
+  - RowA
+  - RowF
+  - RowC
+  - RowI
+  - RowE
+  - RowH
+  - RowG
+  - Board
+  - Controller
+  - CollectiveBoard
+  - Terrain
+  - Tool
+  - DrawingDevice
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Teleportable
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Animal
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
