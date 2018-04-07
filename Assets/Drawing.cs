@@ -8,11 +8,15 @@ public class Drawing : MonoBehaviour {
     private SteamVR_Controller.Device device;
     public bool freeDraw = false;
     public GameObject PencilTip;
+    public GameObject Pencil;
+    public GameObject ZLOCK;
+    private LockZ ZLockScript;
 
     private void Start()
     {
         try
         {
+            ZLockScript = ZLOCK.GetComponent<LockZ>();
             trackedObject = GetComponent<SteamVR_TrackedObject>();
             device = SteamVR_Controller.Input((int)trackedObject.index);
         }
@@ -32,5 +36,16 @@ public class Drawing : MonoBehaviour {
             PencilTip.gameObject.GetComponent<TrailRenderer>().Clear();
             PencilTip.gameObject.GetComponent<TrailRenderer>().enabled = !PencilTip.gameObject.GetComponent<TrailRenderer>().enabled;
         }
+
+        if (ZLockScript.controllerEntered)
+        {
+            Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+            Debug.Log("Controller Recognized in ZLOCK - successful pencil ZLOCK");
+        }
+        else
+        {
+            Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        }
+
     }
 }
