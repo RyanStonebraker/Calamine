@@ -6,6 +6,7 @@ public class DrawableArea : MonoBehaviour {
 
     public GameObject PencilTip;
     public bool insideDrawArea = false;
+    [System.NonSerialized]
     public Vector3[] vertices;
     public GameObject objectToMoveFromDrawing;
 
