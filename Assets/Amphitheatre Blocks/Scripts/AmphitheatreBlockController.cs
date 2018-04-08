@@ -6,25 +6,19 @@ using GameAbstracts;
 public class AmphitheatreBlockController : MonoBehaviour {
 
   public GameObject sourceBlock;
-
   private GameObject blockIcon;
   public float scaleFactor = 0.8f;
-
   private GameObject block;
-
   private string currentName;
-
   private double lastSpawnTime;
 
   void loadPrefabBlock () {
-      blockIcon = Instantiate (sourceBlock, new Vector3(0,0,0), new Quaternion(0,0,0,0));
       lastSpawnTime = Time.time;
       Vector3 center = GetComponent<Renderer>().bounds.center;
-      Vector3 scaledShape = new Vector3(blockIcon.transform.localScale.x * scaleFactor, blockIcon.transform.localScale.y * scaleFactor, blockIcon.transform.localScale.z * scaleFactor);
-      blockIcon.transform.localScale = scaledShape;
+      blockIcon.transform.localScale = new Vector3(blockIcon.transform.localScale.x * scaleFactor, blockIcon.transform.localScale.y * scaleFactor, blockIcon.transform.localScale.z * scaleFactor);
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
       Bounds thisBound = GetComponent<Renderer>().bounds;
-      Bounds iconBound = block.GetComponent<Collider>().bounds;
+      Bounds iconBound = block.GetComponent<Renderer>().bounds;
 
       Vector3 currSize = thisBound.max - thisBound.min;
       Vector3 icoSize = iconBound.max - iconBound.min;
@@ -34,6 +28,7 @@ public class AmphitheatreBlockController : MonoBehaviour {
       currentName = block.name;
   }
   void Start () {
+    blockIcon = Instantiate (sourceBlock, new Vector3(10,10,10), new Quaternion(0,0,0,0));
     loadPrefabBlock();
   }
 
