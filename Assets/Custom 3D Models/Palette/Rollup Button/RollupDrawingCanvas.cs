@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RollupDrawingCanvas : MonoBehaviour {
-	void OnCollisionEnter(Collision other) {
+
+	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name.Contains("Controller")) {
-			GameObject [] tools = GameObject.FindGameObjectsWithTag("Tool");
+            GameObject [] tools = GameObject.FindGameObjectsWithTag("Tool");
 			foreach (GameObject tool in tools) {
 				if (tool.name.Contains("ArtPalette")) {
 					tool.GetComponent<DrawingScreenController>().toggleStage = true;
@@ -13,4 +14,5 @@ public class RollupDrawingCanvas : MonoBehaviour {
 			}
 		}
 	}
+
 }

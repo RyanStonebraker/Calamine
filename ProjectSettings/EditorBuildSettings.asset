@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SimpleDemo.unity
+    guid: f9f21743a7a8f5448a9483b6cb33f2ab
+  - enabled: 0
+    path: Assets/Scenes/CollinDevTest.unity
+    guid: 129b558fa95424283bcd84e8605dfa75
+  - enabled: 1
+    path: Assets/Scenes/freeworld.unity
+    guid: 251968f964a185d4b8670661a132f857
