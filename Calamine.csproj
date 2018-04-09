@@ -330,7 +330,9 @@
     <Compile Include="Assets\CollinDungeon\CALTypes.cs" />
     <Compile Include="Assets\CollinDungeon\CollinCameraMovement.cs" />
     <Compile Include="Assets\CollinDungeon\CollinLoadSource.cs" />
+    <Compile Include="Assets\CollinDungeon\DemoBoardNodeController.cs" />
     <Compile Include="Assets\CollinDungeon\MovementScript.cs" />
+    <Compile Include="Assets\CollinDungeon\TrisDemoBoardNode.cs" />
     <Compile Include="Assets\Dinner table\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
     <Compile Include="Assets\Dinner table\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\Dinner table\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />

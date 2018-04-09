@@ -26,6 +26,13 @@ public class Drawing : MonoBehaviour {
         }
     }
 
+    private void Reset()
+    {
+        PencilTip.gameObject.GetComponent<DrawableArea>().vertices = null;
+        PencilTip.gameObject.GetComponent<TrailRenderer>().Clear();
+        PencilTip.gameObject.GetComponent<TrailRenderer>().enabled = !PencilTip.gameObject.GetComponent<TrailRenderer>().enabled;
+    }
+
     private void Update()
     {
         if (trackedObject == null || device == null)
@@ -33,9 +40,7 @@ public class Drawing : MonoBehaviour {
 
         if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad) && PencilTip.GetComponent<DrawableArea>().insideDrawArea || device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad) && freeDraw)
         {
-            PencilTip.gameObject.GetComponent<DrawableArea>().vertices = null;
-            PencilTip.gameObject.GetComponent<TrailRenderer>().Clear();
-            PencilTip.gameObject.GetComponent<TrailRenderer>().enabled = !PencilTip.gameObject.GetComponent<TrailRenderer>().enabled;
+            Reset();
         }
 
         if (ZLockScript.controllerEntered)
