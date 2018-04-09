@@ -9,6 +9,22 @@ public class TrisDemoBoardNode : MonoBehaviour {
     public int jointBreakForce = 100;
     public int jointTorqueBreakForce = 100;
     public string outputFilePath = "Assets/output.txt";
+    List<GameObject> subNodes = new List<GameObject>();
+    private int frameCountTimer = 0;
+    private bool timerIsRunning = false;
+    bool amITaken = false;
+    private double timeConnected;
+    private GameObject templateNode;
+
+    public static bool isFirstObject = true;
+
+    void Awake()
+    {
+        if (isFirstObject) {
+            isFirstObject = false;
+            templateNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + 12, this.transform.position.y + 12, this.transform.position.z), this.transform.rotation);
+        }
+    }
 
     private void setCollidingObject(Collider col)
     {
@@ -24,6 +40,8 @@ public class TrisDemoBoardNode : MonoBehaviour {
         // Note: object must be a rigidbody for joint to work
         var joint = addWeakFixedJoint(); // (see function addFixedJoint below for physics properties)
         joint.connectedBody = collidingObject.GetComponent<Rigidbody>();
+        timerIsRunning = true;
+        timeConnected = Time.time;
         Debug.Log("Joint created");
     }
 
@@ -47,17 +65,20 @@ public class TrisDemoBoardNode : MonoBehaviour {
         Debug.Log("Impacted");
         try
         {
-            setCollidingObject(other);
-            snap();
+            if (!amITaken) {
+                setCollidingObject(other);
+                snap();
 
-            joinObject();
-            writeToOutputFile(gameObject.name + " Jones Soda makes Bone Hurting Juice");
+                joinObject();
+                writeToOutputFile(gameObject.name + " Jones Soda makes Bone Hurting Juice");
+            }
         }
         catch
         {
             Debug.Log("Bag impact, no rigidbody?");
             collidingObject = null;
         }
+        amITaken = true;
     }
 
     void OnTriggerStay(Collider other)
@@ -87,6 +108,12 @@ public class TrisDemoBoardNode : MonoBehaviour {
         collidingObject.GetComponent<Rigidbody>().useGravity = gravity;
     }
 
+    private void createSubnode()
+    {
+        GameObject newSubNode = Instantiate(templateNode, new Vector3(this.transform.position.x - 0.5f, this.transform.position.y + 0.85f, this.transform.position.z), this.transform.rotation);
+        subNodes.Add(newSubNode);
+    }
+
     //FILE IO
 
     void writeToOutputFile(string data)
@@ -106,6 +133,13 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     void Update()
     {
-     
+        if (timerIsRunning && ((Time.time - timeConnected) > 2.0)) {
+            timerIsRunning = false;
+            createSubnode();
+            Debug.Log("Execution within if statement");
+            collidingObject = null;
+            killJoint();
+
+        }
     }
 }
