@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 114651420111815922}
   m_Layer: 0
   m_Name: ArtPalette
-  m_TagString: Untagged
+  m_TagString: Tool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,7 +587,8 @@ MonoBehaviour:
   boardName: BoardCenter
   triggerNode: Node
   Screen: {fileID: 1470315904862702, guid: 72e20323b9de06647a41841675935a5e, type: 2}
-  distanceFromBoard: 2
-  rollingSpeed: 1
-  startHeight: 100
+  distanceFromBoard: 1
+  rollingSpeed: 0.1
+  startHeight: 10
   isVisible: 0
+  toggleStage: 0
