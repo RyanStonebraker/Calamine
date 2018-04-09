@@ -13,6 +13,7 @@ public class AmphitheatreBlockController : MonoBehaviour {
   void loadPrefabBlock () {
       Vector3 center = GetComponent<Renderer>().bounds.center;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
+      block.AddComponent<UnusedDelete>();
       Bounds thisBound = GetComponent<Renderer>().bounds;
       Bounds iconBound = block.GetComponent<Collider>().bounds;
 
@@ -29,13 +30,18 @@ public class AmphitheatreBlockController : MonoBehaviour {
     loadPrefabBlock();
   }
 
+  void OnTriggerEnter(Collider other) {
+    if (other.gameObject.name.Contains("Controller")) {
+      block.GetComponent<Rigidbody>().isKinematic = false;
+      block.GetComponent<Rigidbody>().useGravity = true;
+    }
+  }
   void OnTriggerExit(Collider other) {
-    // other.transform.localScale = sourceBlock.transform.localScale;
-    Debug.Log("Other ID: " + other.gameObject.GetInstanceID() + " Block ID: " + block.GetInstanceID());
         if (other.gameObject.GetInstanceID() == block.GetInstanceID())
         {
-            block.GetComponent<Rigidbody>().isKinematic = false;
-            block.GetComponent<Rigidbody>().useGravity = true;
+            // NOTE: These may or may not be needed for actual VR
+            // block.GetComponent<Rigidbody>().isKinematic = false;
+            // block.GetComponent<Rigidbody>().useGravity = true;
             other.transform.localScale = sourceBlock.transform.localScale;
             loadPrefabBlock();
         }
