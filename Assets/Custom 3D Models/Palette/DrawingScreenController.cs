@@ -62,8 +62,8 @@ public class DrawingScreenController : MonoBehaviour {
 				DynamicScreen.transform.position = updatedPosition;
 			}
 			else {
-				Destroy(DynamicScreen);
-				DynamicScreen = null;
+				// Destroy(DynamicScreen);
+				// DynamicScreen = null;
 				isVisible = false;
 				toggleStage = false;
 			}
