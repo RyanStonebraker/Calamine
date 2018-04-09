@@ -22,6 +22,7 @@ public class TrisDemoBoardNode : MonoBehaviour {
     {
         if (isFirstObject) {
             isFirstObject = false;
+            this.GetComponent<Renderer>().material.shader = Shader.Find("Custom/YellowPulse");
             templateNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + 12, this.transform.position.y + 12, this.transform.position.z), this.transform.rotation);
         }
     }
@@ -111,6 +112,9 @@ public class TrisDemoBoardNode : MonoBehaviour {
     private void createSubnode()
     {
         GameObject newSubNode = Instantiate(templateNode, new Vector3(this.transform.position.x - 0.5f, this.transform.position.y + 0.85f, this.transform.position.z), this.transform.rotation);
+        newSubNode.GetComponent<Renderer>().material.color = Color.red;
+        newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
+        this.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
         subNodes.Add(newSubNode);
     }
 
