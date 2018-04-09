@@ -18,6 +18,13 @@ public class DrawingScreenController : MonoBehaviour {
 
 	void Start () {
 		Board = GameObject.Find(boardName);
+		GameObject [] tools = GameObject.FindGameObjectsWithTag("Tool");
+		foreach (GameObject tool in tools) {
+			if (tool.name.Contains("DrawingCanvas")) {
+				DynamicScreen = tool;
+				return;
+			}
+		}
 		InstantiateDisplay();
 	}
 

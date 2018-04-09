@@ -12,7 +12,6 @@ public class UnusedDelete : MonoBehaviour {
 	}
 	void OnTriggerExit(Collider other) {
 		if (other.gameObject.name.Contains("Controller")) {
-			Destroy(this, 5);
 			Invoke("MaybeDestroy", destroyDelay);
 		}
 	}
