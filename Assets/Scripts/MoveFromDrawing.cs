@@ -8,6 +8,8 @@ public class MoveFromDrawing : MonoBehaviour {
     public Vector3[] movementPoints = null;
     public GameObject pencilTip;
     public float moveMultiplyer = 1f;
+    public bool flipYX = false;
+    public GameObject victoryObject;
 
     private Rigidbody rb;
     private int pointCounter = 1;
@@ -21,6 +23,24 @@ public class MoveFromDrawing : MonoBehaviour {
         //previousDrawPoint = initialPosition;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "FailOnHit")
+        {
+            Reset();
+            rb.transform.position = initialPosition;
+        }
+        else if (other.tag == "Goal")
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                GameObject newSpawn = Instantiate(victoryObject, gameObject.transform.position, Quaternion.identity);
+                newSpawn.GetComponent<Transform>().localScale *= 7;
+            }
+            Debug.Log("Level Complete!");
+        }
+    }
+
     private void initializeMovementPoints()
     {
         Debug.Log("**Entered InitializeMovementPoints**");
@@ -32,6 +52,13 @@ public class MoveFromDrawing : MonoBehaviour {
         previousDrawPoint = movementPoints[pointCounter - 1];
         Vector3 currentPosition = gameObject.transform.position;
         Vector3 drawPointDifference = (movementPoints[pointCounter] - previousDrawPoint) * moveMultiplyer;
+        if (flipYX)
+        {
+            // le std::swap face
+            float temp = drawPointDifference.y;
+            drawPointDifference.y = drawPointDifference.x;
+            drawPointDifference.x = temp;
+        }
         Vector3 nextMovePoint = (currentPosition + drawPointDifference);
         pointCounter++;
         Debug.Log("Calculated nextDrawPoint: " + nextMovePoint);
@@ -42,7 +69,6 @@ public class MoveFromDrawing : MonoBehaviour {
     {
         startMoving = false;
         pointCounter = 1;
-        //previousDrawPoint = initialPosition;
         movementPoints = new Vector3[0];
         Debug.Log("Reset Complete");
     }
