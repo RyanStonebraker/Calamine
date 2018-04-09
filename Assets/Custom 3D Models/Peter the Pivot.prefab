@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4064531752015216}
   - component: {fileID: 65060097751222214}
   - component: {fileID: 54673703375284630}
+  - component: {fileID: 114751793562676316}
   m_Layer: 0
   m_Name: Peter the Pivot
   m_TagString: Untagged
@@ -104,8 +105,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4211010570389466}
-  - component: {fileID: 65602040063064188}
-  - component: {fileID: 114499240478786622}
   - component: {fileID: 23107555038622614}
   m_Layer: 0
   m_Name: Peter
@@ -494,24 +493,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0030109808, y: 0.005099435, z: 0.0022999984}
   m_Center: {x: 0.00022100277, y: 0.00046006465, z: 1.0487012e-18}
---- !u!65 &65602040063064188
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1929669519125074}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.0031, y: 0.0053, z: 0.0023}
-  m_Center: {x: 0.0003, y: 0.001, z: 0.0032}
---- !u!114 &114499240478786622
+--- !u!114 &114751793562676316
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1929669519125074}
+  m_GameObject: {fileID: 1724389321546632}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27425959d9b795240959db168aad3826, type: 3}

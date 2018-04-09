@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4862951019015060}
   - component: {fileID: 54898990223458770}
   - component: {fileID: 65571361031340946}
+  - component: {fileID: 114368583845511376}
   m_Layer: 0
   m_Name: Nelly the Pivot
   m_TagString: Untagged
@@ -70,7 +71,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4123740152558592}
-  - component: {fileID: 114462443915807856}
   - component: {fileID: 23212618297429806}
   m_Layer: 0
   m_Name: Nelly
@@ -349,12 +349,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.009, y: 0.005, z: 0.00501564}
   m_Center: {x: 0.0009999999, y: 0, z: -0.00061253353}
---- !u!114 &114462443915807856
+--- !u!114 &114368583845511376
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440487139324034}
+  m_GameObject: {fileID: 1092144836227004}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b839219f3a60a114c96b86f6a4a8c11d, type: 3}

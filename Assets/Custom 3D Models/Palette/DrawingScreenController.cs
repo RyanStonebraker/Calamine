@@ -18,6 +18,7 @@ public class DrawingScreenController : MonoBehaviour {
 
 	void Start () {
 		Board = GameObject.Find(boardName);
+		InstantiateDisplay();
 	}
 
 	void Update () {
@@ -37,7 +38,7 @@ public class DrawingScreenController : MonoBehaviour {
 
 	void RollDownDisplay () {
 		if (!DynamicScreen)
-			InstantiateDisplay();
+			return;
 
 		if (DynamicScreen.transform.position.y > Board.transform.position.y) {
 			Vector3 updatedPosition = new Vector3(DynamicScreen.transform.position.x, 
