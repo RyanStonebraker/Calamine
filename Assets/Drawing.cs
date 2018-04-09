@@ -33,13 +33,14 @@ public class Drawing : MonoBehaviour {
 
         if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad) && PencilTip.GetComponent<DrawableArea>().insideDrawArea || device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad) && freeDraw)
         {
+            PencilTip.gameObject.GetComponent<DrawableArea>().vertices = null;
             PencilTip.gameObject.GetComponent<TrailRenderer>().Clear();
             PencilTip.gameObject.GetComponent<TrailRenderer>().enabled = !PencilTip.gameObject.GetComponent<TrailRenderer>().enabled;
         }
 
         if (ZLockScript.controllerEntered)
         {
-            Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+            Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
             Debug.Log("Controller Recognized in ZLOCK - successful pencil ZLOCK");
         }
         else
