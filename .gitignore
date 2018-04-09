@@ -33,4 +33,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-*/output.txt
+Assets/Output/output.txt
