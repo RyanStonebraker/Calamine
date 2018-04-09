@@ -9,13 +9,8 @@ public class AmphitheatreBlockController : MonoBehaviour {
   private GameObject blockIcon;
   public float scaleFactor = 0.8f;
   private GameObject block;
-  private string currentName;
-  private double lastSpawnTime;
 
   void loadPrefabBlock () {
-        try
-        {
-            lastSpawnTime = Time.time;
       Vector3 center = GetComponent<Renderer>().bounds.center;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
       Bounds thisBound = GetComponent<Renderer>().bounds;
@@ -23,16 +18,10 @@ public class AmphitheatreBlockController : MonoBehaviour {
 
       Vector3 currSize = thisBound.max - thisBound.min;
       Vector3 icoSize = iconBound.max - iconBound.min;
-            Debug.Log("Local Scale is: " + block.transform.localScale + " for " + block.name + " with multiplyer of: " + (Mathf.Max(currSize.x, currSize.y) / (Mathf.Max(icoSize.x, icoSize.y))));
-            block.GetComponent<Transform>().localScale = block.transform.localScale * (Mathf.Max(currSize.x, currSize.y) / (Mathf.Max(icoSize.x, icoSize.y)));
-
+      block.GetComponent<Transform>().localScale = block.transform.localScale * (Mathf.Max(currSize.x, currSize.y) / (Mathf.Max(icoSize.x, icoSize.y)));
       block.GetComponent<Transform>().localScale = new Vector3(block.transform.localScale.x * scaleFactor, block.transform.localScale.y * scaleFactor, block.transform.localScale.z * scaleFactor);
-      currentName = block.name;
-        }
-        catch
-        {
-
-        }
+      block.GetComponent<Rigidbody>().isKinematic = true;
+      block.GetComponent<Rigidbody>().useGravity = false;
     }
   void Start () {
     blockIcon = Instantiate (sourceBlock, new Vector3(10,10,10), new Quaternion(0,0,0,0));
@@ -42,8 +31,11 @@ public class AmphitheatreBlockController : MonoBehaviour {
 
   void OnTriggerExit(Collider other) {
     // other.transform.localScale = sourceBlock.transform.localScale;
-        if (other.gameObject.name == currentName && Time.time - lastSpawnTime > 0.5)
+    Debug.Log("Other ID: " + other.gameObject.GetInstanceID() + " Block ID: " + block.GetInstanceID());
+        if (other.gameObject.GetInstanceID() == block.GetInstanceID())
         {
+            block.GetComponent<Rigidbody>().isKinematic = false;
+            block.GetComponent<Rigidbody>().useGravity = true;
             other.transform.localScale = sourceBlock.transform.localScale;
             loadPrefabBlock();
         }
