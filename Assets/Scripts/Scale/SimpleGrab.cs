@@ -45,21 +45,23 @@ public class SimpleGrab : MonoBehaviour {
             return;
 
         //assign colliding object as a potential grab target
-        collidingObject = col.gameObject;
+            collidingObject = col.gameObject;
     }
 
     // Make it possible to grab objects from other controller by
     // reading collision data from other controller collider
     public void OnTriggerEnter(Collider other)
     {
-        setCollidingObject(other);
+        if (other.name != "Spawn Area")
+            setCollidingObject(other);
     }
 
     // Fixes a bug where if the trigger is held on a collidable game object
     // it has a chance to fail a valid collision
     public void OnTriggerStay(Collider other)
     {
-        setCollidingObject(other);
+        if (other.name != "Spawn Area")
+            setCollidingObject(other);
     }
 
     // When the collider exits an ungrabbed, grabbable game object, clear the
@@ -70,7 +72,8 @@ public class SimpleGrab : MonoBehaviour {
         if (!collidingObject)
             return;
 
-        collidingObject = null;
+        if (other.name != "Spawn Area")
+            collidingObject = null;
     }
 
     private void grabObject()

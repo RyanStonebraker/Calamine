@@ -273,5 +273,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PencilTip: {fileID: 1490301987043088}
   insideDrawArea: 0
-  vertices: []
   objectToMoveFromDrawing: {fileID: 0}
