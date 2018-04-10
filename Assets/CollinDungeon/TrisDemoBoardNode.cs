@@ -42,7 +42,6 @@ public class TrisDemoBoardNode : MonoBehaviour {
             case 2:
                 whatObjectsDoITake = "Character";
                 break;
-
             case 3:
                 whatObjectsDoITake = "idk";
                 break;
@@ -141,6 +140,15 @@ public class TrisDemoBoardNode : MonoBehaviour {
     {
         depthCounter++;
         GameObject newSubNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + indentDistance, this.transform.position.y - scrollDistance, this.transform.position.z), this.transform.rotation);
+
+        if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake == "Character")
+        {
+            newSubNode.AddComponent<CharacterMeshManager>();
+        }
+        else if (whatObjectsDoITake != "Character" && newSubNode.GetComponent<CharacterMeshManager>())
+        {
+            Destroy(newSubNode.GetComponent<CharacterMeshManager>());
+        }
         newSubNode.GetComponent<Renderer>().material.color = Color.red;
         newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
         //this.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");

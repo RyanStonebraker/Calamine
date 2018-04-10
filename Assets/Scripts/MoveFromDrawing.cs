@@ -79,7 +79,7 @@ public class MoveFromDrawing : MonoBehaviour {
         getMoves = false;
         startMoving = false;
         pointCounter = 1;
-        //movementPoints = new Vector3[0];
+        resetPosition();
         Debug.Log("Reset Complete");
     }
 
