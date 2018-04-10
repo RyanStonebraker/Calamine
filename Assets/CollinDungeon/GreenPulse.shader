@@ -1,9 +1,9 @@
-﻿Shader "Custom/YellowPulse"
+﻿Shader "Custom/GreenPulse"
 {
 	Properties
 	{
-		_MainTex("Base (RGBA)", 2D) = "white" {}
-	_FallOffTex("FallOff (A)", 2D) = "white" {}
+		_MainTex("Base (RGBA)", 2D)    = "white" {}
+	    _FallOffTex("FallOff (A)", 2D) = "white" {}
 	}
 		SubShader
 	{
@@ -14,7 +14,7 @@
 #pragma surface surf Lambert alpha
 
 		sampler2D _MainTex;
-	sampler2D _FallOffTex;
+	    sampler2D _FallOffTex;
 
 	struct Input
 	{
@@ -28,9 +28,9 @@
 		half fo = tex2D(_FallOffTex, IN.uv_MainTex).a;
 
 		fixed illum = fo*((sin(IN.worldPos.x + _Time.g * 5) + cos(IN.worldPos.z + _Time.g * 5)) / 2 + 1) * 0.1f;//try use here some random value from vertex color
-		o.Emission = fixed3(1.0f, 0.9294f, 0.0f)*(illum + pow(illum, 2) * 5);
+		o.Emission = fixed3(0.29f, 0.93f, 0.455f)*(illum + pow(illum, 2) * 5);
 
-		o.Albedo = lerp(c.rgb, fixed3(1.0f, 0.9294f, 0.0f), illum);
+		o.Albedo = lerp(c.rgb, fixed3(0.29f, 0.93f ,0.455f), illum);
 
 		o.Alpha = c.a;
 	}
