@@ -30,7 +30,7 @@ public class TrisDemoBoardNode : MonoBehaviour {
     {
         if (isFirstObject) {
             isFirstObject = false;
-            this.GetComponent<Renderer>().material.shader = Shader.Find("Custom/YellowPulse");
+            this.GetComponent<Renderer>().material.shader = Shader.Find("Custom/GreenPulse");
             templateNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + 12, this.transform.position.y + 12, this.transform.position.z), this.transform.rotation);
         }
         myDepth = depthCounter;
