@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class LoopingBlock : MonoBehaviour {
     public bool startLoop = false;
+    private bool insideLoop = false;
     public int loopCount = 1;
+    private int saveLoopCount = 1;
     GameObject compileBlock;
     private MoveFromDrawing moveFromDrawingScript;
 
@@ -16,13 +18,19 @@ public class LoopingBlock : MonoBehaviour {
     void Update () {
         if (startLoop && loopCount > 0 && moveFromDrawingScript.startMoving == false)
         {
+            if (!insideLoop)
+            {
+                insideLoop = true;
+                saveLoopCount = loopCount;
+            }
             moveFromDrawingScript.startMoving = true;
             --loopCount;
         }
         if (startLoop && loopCount <= 0)
         {
             startLoop = false;
-            loopCount = 1;
+            loopCount = saveLoopCount;
+            insideLoop = false;
         }
 	}
 }

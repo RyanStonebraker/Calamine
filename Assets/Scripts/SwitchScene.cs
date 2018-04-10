@@ -6,9 +6,18 @@ using System;
 
 public class SwitchScene : MonoBehaviour {
 
-    void OnCollisionEnter(Collision collision)
+    void reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.name.Contains("Controller"))
-            SceneManager.LoadScene("freeworld");
+        {
+            Debug.Log("Scene Switch");
+            Invoke("reload", 1f);
+        }
+            
     }
 }

@@ -46,9 +46,11 @@ public class Haptic : MonoBehaviour {
     {
         if (simpleGrabScript && simpleGrabScript.objectInHand && simpleGrabScript.objectInHand.name.Contains("pencil"))
         {
+            Debug.Log("Inside Haptic init if");
             try
             {
                 pencilTip = simpleGrabScript.objectInHand.GetComponentInChildren<DrawableArea>().PencilTip;
+                pencilTipScript = pencilTip.GetComponent<DrawableArea>();
             }
             catch
             {

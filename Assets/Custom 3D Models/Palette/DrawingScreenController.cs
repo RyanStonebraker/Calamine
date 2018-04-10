@@ -9,7 +9,7 @@ public class DrawingScreenController : MonoBehaviour {
 	public GameObject Screen;
 	private GameObject DynamicScreen;
 	public float distanceFromBoard = 0.5f;
-	public float rollingSpeed = 0.1f;
+	public float rollingSpeed = 2;
 	private GameObject Board;
 
 	public int startHeight = 100;
@@ -17,6 +17,7 @@ public class DrawingScreenController : MonoBehaviour {
 	public bool toggleStage = false;
 
 	void Start () {
+        rollingSpeed = 0.5f;
 		Board = GameObject.Find(boardName);
 		GameObject [] tools = GameObject.FindGameObjectsWithTag("Tool");
 		foreach (GameObject tool in tools) {

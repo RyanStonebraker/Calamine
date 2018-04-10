@@ -20,7 +20,13 @@ public class compileAndRun : MonoBehaviour {
     {
         if(other.gameObject.name.Contains("Controller"))
         {
-            GameObject.Find("EditorBoard").gameObject.SetActive(false);
+            try
+            {
+                GameObject.Find("EditorBoard").gameObject.SetActive(false);
+                GameObject.Find("DrawingCanvas").gameObject.SetActive(false);
+            }
+            catch
+            { }
             Debug.Log("Controller in compile/run block");
             bool handledByLoop = false;
 
@@ -32,6 +38,10 @@ public class compileAndRun : MonoBehaviour {
                     Debug.Log("Calling loop from inside compileAndRun");
                     tool.GetComponent<LoopingBlock>().startLoop = true;
                     handledByLoop = true;
+                }
+                if (tool.name.Contains("Node"))
+                {
+                    tool.transform.position = new Vector3(100, 100, 100);
                 }
             }
 
