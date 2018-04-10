@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveFromDrawing : MonoBehaviour {
 
+    public bool getMoves = false;
     public bool startMoving = false;
     public Vector3[] movementPoints = null;
     public GameObject pencilTip;
@@ -75,9 +76,10 @@ public class MoveFromDrawing : MonoBehaviour {
 
     private void Reset()
     {
+        getMoves = false;
         startMoving = false;
         pointCounter = 1;
-        movementPoints = new Vector3[0];
+        //movementPoints = new Vector3[0];
         Debug.Log("Reset Complete");
     }
 
@@ -88,11 +90,13 @@ public class MoveFromDrawing : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-		if(startMoving)
+        if (getMoves)
         {
-            if(movementPoints.Length == 0)
-                initializeMovementPoints();
-
+            initializeMovementPoints();
+            getMoves = false;
+        }
+        if (startMoving)
+        { 
             if (pointCounter < movementPoints.Length)
                 rb.MovePosition(calculatePointToMoveTo() + transform.forward * Time.deltaTime);
             else

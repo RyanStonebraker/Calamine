@@ -31,7 +31,7 @@ public class DrawableArea : MonoBehaviour {
         if (other.gameObject.name == "DrawArea")
         {
             //PencilTip = Instantiate(PencilTip); //MULTILINE IDEA
-            objectToMoveFromDrawingScript.startMoving = false;
+            objectToMoveFromDrawingScript.getMoves = false;
             objectToMoveFromDrawingScript.resetPosition();
             PencilTip.gameObject.GetComponent<TrailRenderer>().enabled = true;
             insideDrawArea = true;
@@ -44,7 +44,7 @@ public class DrawableArea : MonoBehaviour {
         if (other.gameObject.name == "DrawArea")
         {
             createVertexList();
-            objectToMoveFromDrawingScript.startMoving = true;
+            objectToMoveFromDrawingScript.getMoves = true;
             PencilTip.gameObject.GetComponent<TrailRenderer>().enabled = false;
             insideDrawArea = false;
             Debug.Log("Trail Renderer is " + PencilTip.gameObject.GetComponent<TrailRenderer>().enabled);
