@@ -17,6 +17,10 @@ public class TrisDemoBoardNode : MonoBehaviour {
     private double timeConnected;
     private GameObject templateNode;
 
+    public static int depthCounter = 1;
+    public int myDepth;
+    public string whatObjectsDoITake;
+
     public float indentDistance = 0.5f;
     public float scrollDistance = 0.55f;
 
@@ -28,6 +32,23 @@ public class TrisDemoBoardNode : MonoBehaviour {
             isFirstObject = false;
             this.GetComponent<Renderer>().material.shader = Shader.Find("Custom/YellowPulse");
             templateNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + 12, this.transform.position.y + 12, this.transform.position.z), this.transform.rotation);
+        }
+        myDepth = depthCounter;
+        switch(myDepth)
+        {
+            case 1:
+                whatObjectsDoITake = "Tool";
+                break;
+            case 2:
+                whatObjectsDoITake = "Character";
+                break;
+
+            case 3:
+                whatObjectsDoITake = "idk";
+                break;
+            default:
+                whatObjectsDoITake = "Finish";
+                break;
         }
     }
 
@@ -67,12 +88,13 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Tool" && other.gameObject.tag != "Character")
+        if (other.gameObject.tag != whatObjectsDoITake)
             return;
         Debug.Log("Impacted");
         try
         {
-            if (!amITaken) {
+            if (!amITaken && other.tag == whatObjectsDoITake) {
+                Debug.Log("2-1-1-3");
                 setCollidingObject(other);
                 snap();
 
@@ -117,6 +139,7 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     private void createSubnode()
     {
+        depthCounter++;
         GameObject newSubNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + indentDistance, this.transform.position.y - scrollDistance, this.transform.position.z), this.transform.rotation);
         newSubNode.GetComponent<Renderer>().material.color = Color.red;
         newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
