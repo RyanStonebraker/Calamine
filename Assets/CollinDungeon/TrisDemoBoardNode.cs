@@ -140,6 +140,7 @@ public class TrisDemoBoardNode : MonoBehaviour {
         if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake == "Character")
         {
             newSubNode.AddComponent<CharacterMeshManager>();
+            newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/HighlightPulse");
         }
         else if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake != "Character" && newSubNode.GetComponent<CharacterMeshManager>())
         {
@@ -149,6 +150,7 @@ public class TrisDemoBoardNode : MonoBehaviour {
         if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake == "FlowOfControl")
         {
             newSubNode.AddComponent<LoopingBlock>();
+            newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/YellowPulse");
         }
         else if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake != "FlowOfControl" && newSubNode.GetComponent<LoopingBlock>())
         {
