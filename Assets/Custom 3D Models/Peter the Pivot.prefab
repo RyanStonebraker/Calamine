@@ -504,5 +504,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27425959d9b795240959db168aad3826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inflateRate: 0.01
-  maxSize: 3
+  inflateRate: 0.001
+  maxSize: 0.5
