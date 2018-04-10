@@ -32,7 +32,9 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
         if (isFirstObject) {
             isFirstObject = false;
-            this.GetComponent<Renderer>().material.shader = Shader.Find("Custom/GreenPulse");
+            //this.GetComponent<Renderer>().material.shader = Shader.Find("Custom/GreenPulse");
+            this.GetComponent<PulseColor>().Color1 = new Color(0.29f, 0.933f, 0.455f, 1.0f);
+            this.GetComponent<PulseColor>().Color2 = new Color(1.0f, 1.0f, 1.0f, 0.345f);
             templateNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + 12, this.transform.position.y + 12, this.transform.position.z), this.transform.rotation);
         }
 
@@ -143,7 +145,10 @@ public class TrisDemoBoardNode : MonoBehaviour {
         if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake == "Character")
         {
             newSubNode.AddComponent<CharacterMeshManager>();
-            newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/HighlightPulse");
+            //newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/HighlightPulse");
+            //bleu
+            this.GetComponent<PulseColor>().Color1 = new Color(0.596f, 0.957f, 1.0f, 0.807f);
+            this.GetComponent<PulseColor>().Color2 = new Color(1.0f, 1.0f, 1.0f, 0.345f);
         }
         else if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake != "Character" && newSubNode.GetComponent<CharacterMeshManager>())
         {
@@ -153,16 +158,20 @@ public class TrisDemoBoardNode : MonoBehaviour {
         if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake == "FlowOfControl")
         {
             newSubNode.AddComponent<LoopingBlock>();
-            newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/YellowPulse");
+            //newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/YellowPulse");
+            //yelloo
+            this.GetComponent<PulseColor>().Color1 = new Color(1.0f, 0.93f, 0.0f, 0.807f);
+            this.GetComponent<PulseColor>().Color2 = new Color(1.0f, 1.0f, 1.0f, 0.345f);
         }
         else if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake != "FlowOfControl" && newSubNode.GetComponent<LoopingBlock>())
         {
             Destroy(newSubNode.GetComponent<LoopingBlock>());
         }
 
-        newSubNode.GetComponent<Renderer>().material.color = Color.red;
+        //newSubNode.GetComponent<Renderer>().material.color = Color.red;
         //newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
         //this.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+        this.GetComponent<PulseColor>().enabled = false;
         subNodes.Add(newSubNode);
     }
 
