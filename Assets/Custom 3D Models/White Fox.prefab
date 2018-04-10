@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 4210708018564058}
   - component: {fileID: 54013276775554334}
   - component: {fileID: 65693787902386426}
+  - component: {fileID: 33476611079444078}
   m_Layer: 0
   m_Name: White Fox
   m_TagString: Character
@@ -1148,6 +1149,13 @@ Transform:
   m_Father: {fileID: 4901279937345888}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &33476611079444078
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1726383382954218}
+  m_Mesh: {fileID: 4300002, guid: 7a46eb98a17d8f446b46dd61e00e92b2, type: 3}
 --- !u!54 &54013276775554334
 Rigidbody:
   m_ObjectHideFlags: 1

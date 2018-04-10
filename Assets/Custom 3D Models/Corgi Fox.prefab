@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 4761159789974290}
   - component: {fileID: 65781480513178482}
   - component: {fileID: 54614556343630298}
+  - component: {fileID: 33902205846884078}
   m_Layer: 0
   m_Name: Corgi Fox
   m_TagString: Character
@@ -1147,6 +1148,13 @@ Transform:
   m_Father: {fileID: 4640287181030398}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &33902205846884078
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1421722342585592}
+  m_Mesh: {fileID: 4300002, guid: 7a46eb98a17d8f446b46dd61e00e92b2, type: 3}
 --- !u!54 &54614556343630298
 Rigidbody:
   m_ObjectHideFlags: 1

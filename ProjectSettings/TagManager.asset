@@ -37,6 +37,8 @@ TagManager:
   - FailOnHit
   - Goal
   - Character
+  - Fragment
+  - FlowOfControl
   layers:
   - Default
   - TransparentFX

@@ -20,7 +20,21 @@ public class compileAndRun : MonoBehaviour {
         if(other.gameObject.name.Contains("Controller"))
         {
             Debug.Log("Controller in compile/run block");
-            moveFromDrawingScript.startMoving = true;
+            bool handledByLoop = false;
+
+            GameObject[] tools = GameObject.FindGameObjectsWithTag("Tool");
+            foreach (GameObject tool in tools)
+            {
+                if (tool.GetComponent<LoopingBlock>())
+                {
+                    Debug.Log("Calling loop from inside compileAndRun");
+                    tool.GetComponent<LoopingBlock>().startLoop = true;
+                    handledByLoop = true;
+                }
+            }
+
+            if (!handledByLoop)
+                moveFromDrawingScript.startMoving = true;
         }
     }
 }

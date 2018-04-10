@@ -43,7 +43,7 @@ public class TrisDemoBoardNode : MonoBehaviour {
                 whatObjectsDoITake = "Character";
                 break;
             case 3:
-                whatObjectsDoITake = "idk";
+                whatObjectsDoITake = "FlowOfControl";
                 break;
             default:
                 whatObjectsDoITake = "Finish";
@@ -93,12 +93,10 @@ public class TrisDemoBoardNode : MonoBehaviour {
         try
         {
             if (!amITaken && other.tag == whatObjectsDoITake) {
-                Debug.Log("2-1-1-3");
                 setCollidingObject(other);
                 snap();
 
                 joinObject();
-                writeToOutputFile(gameObject.name + " Jones Soda makes Bone Hurting Juice");
             }
         }
         catch
@@ -123,11 +121,9 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exited");
         //setPhysics(false, true); WIP
         //collidingObject = null;
         //killJoint();
-        Debug.Log("Joint Destroyed");
     }
 
     private void setPhysics(bool gravity, bool kinematic)
@@ -145,10 +141,20 @@ public class TrisDemoBoardNode : MonoBehaviour {
         {
             newSubNode.AddComponent<CharacterMeshManager>();
         }
-        else if (whatObjectsDoITake != "Character" && newSubNode.GetComponent<CharacterMeshManager>())
+        else if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake != "Character" && newSubNode.GetComponent<CharacterMeshManager>())
         {
             Destroy(newSubNode.GetComponent<CharacterMeshManager>());
         }
+
+        if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake == "FlowOfControl")
+        {
+            newSubNode.AddComponent<LoopingBlock>();
+        }
+        else if (newSubNode.GetComponent<TrisDemoBoardNode>().whatObjectsDoITake != "FlowOfControl" && newSubNode.GetComponent<LoopingBlock>())
+        {
+            Destroy(newSubNode.GetComponent<LoopingBlock>());
+        }
+
         newSubNode.GetComponent<Renderer>().material.color = Color.red;
         newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
         //this.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
@@ -159,17 +165,6 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     void writeToOutputFile(string data)
     {
-        try
-        {
-            StreamWriter outFile = new StreamWriter(outputFilePath, true); //true = append, false = overwrite
-            outFile.WriteLine(data);
-            outFile.Close();
-            Debug.Log("File Write Good");
-        }
-        catch
-        {
-            Debug.Log("File Write Failed");
-        }
     }
 
     void Update()
