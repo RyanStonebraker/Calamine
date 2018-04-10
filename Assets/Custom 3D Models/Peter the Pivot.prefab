@@ -505,4 +505,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inflateRate: 0.001
-  maxSize: 0.5
+  maxSize: 4000

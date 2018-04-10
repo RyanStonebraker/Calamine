@@ -54,8 +54,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4280651843387652}
   - component: {fileID: 54039691219188206}
-  - component: {fileID: 136815712011392524}
   - component: {fileID: 114756804225746900}
+  - component: {fileID: 23986954859961182}
+  - component: {fileID: 65659771628889156}
   m_Layer: 0
   m_Name: Larry The Loop
   m_TagString: FlowOfControl
@@ -119,8 +120,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224395845178234}
   m_LocalRotation: {x: 0.030971212, y: -0.6507313, z: 0.026582614, w: 0.75821036}
-  m_LocalPosition: {x: 245.97, y: 1.018, z: 280.296}
-  m_LocalScale: {x: 97.355, y: 97.3551, z: 97.3551}
+  m_LocalPosition: {x: 247.551, y: 0.388, z: 278.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4616777861210246}
   m_Father: {fileID: 0}
@@ -160,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 1882369531514114}
   m_LocalRotation: {x: -0.030971212, y: 0.6507313, z: -0.026582614, w: 0.75821036}
   m_LocalPosition: {x: -0.0018593619, y: 0.00041237372, z: 0.000338194}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 97.355, y: 97.355, z: 97.355}
   m_Children:
   - {fileID: 4807660027893906}
   m_Father: {fileID: 4280651843387652}
@@ -331,6 +332,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23986954859961182
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224395845178234}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!33 &33014348827387830
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -371,9 +406,21 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!65 &65659771628889156
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224395845178234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0026512423, y: 0.005545336, z: 0.005393894}
+  m_Center: {x: 0.00018266293, y: 0.0002055472, z: 0.00015881158}
 --- !u!114 &114756804225746900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,17 +432,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f43b3a539fe3a42a945573c3ae0bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loopCount: 1
---- !u!136 &136815712011392524
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1224395845178234}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0018641253
-  m_Height: 0.0047302935
-  m_Direction: 2
-  m_Center: {x: 0.0000003937147, y: 0.00021579218, z: 0.00012792667}
+  loopCount: 3

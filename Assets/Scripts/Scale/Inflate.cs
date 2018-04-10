@@ -9,6 +9,7 @@ public class Inflate : MonoBehaviour {
 
     private bool isMaxSize(Collision collision)
     {
+        return false;
         float maxMagnitude = (float)System.Math.Sqrt(3.0f * maxSize * maxSize);
         return collision.gameObject.transform.localScale.magnitude >= maxMagnitude;
     }

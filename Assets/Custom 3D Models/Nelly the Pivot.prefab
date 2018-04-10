@@ -360,5 +360,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b839219f3a60a114c96b86f6a4a8c11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deflateRate: 0.01
+  deflateRate: 0.001
   minSize: 0.1
