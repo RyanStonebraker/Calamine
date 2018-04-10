@@ -17,7 +17,7 @@ public class Explode : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("StartBlock").GetComponent<SwitchScene>().switchScene)
+        //if (GameObject.Find("StartBlock").GetComponent<SwitchScene>().switchScene)
             spawnFragments();
     }
 }

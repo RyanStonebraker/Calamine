@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 33902205846884078}
   - component: {fileID: 23241746588981842}
   m_Layer: 0
-  m_Name: Corgi Fox
+  m_Name: Brown Fox
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1163,7 +1163,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: af3a7daa4e44b814d8193ab256a1f9d7, type: 2}
+  - {fileID: 2100000, guid: 1e28f2ea86686bf46bd1a28256f0888b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

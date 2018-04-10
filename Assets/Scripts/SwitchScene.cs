@@ -6,10 +6,9 @@ using System;
 
 public class SwitchScene : MonoBehaviour {
 
-    public bool switchScene = false;
-
     void OnCollisionEnter(Collision collision)
     {
-        switchScene = true;
+        if(collision.gameObject.name.Contains("Controller"))
+            SceneManager.LoadScene("freeworld");
     }
 }

@@ -8,11 +8,11 @@ public class UnusedDelete : MonoBehaviour {
     private int parentID = 0;
 
 	void OnTriggerEnter(Collider other) {
-        if (parentID == 0 && other.gameObject.name.Contains("Controller"))
+        if (parentID == 0 && (other.gameObject.name.Contains("Controller")))
         {
             parentID = other.GetInstanceID();
         }
-        if (deleteTriggered && other.gameObject.name.Contains("Controller")) {
+        if (deleteTriggered && (other.gameObject.name.Contains("Controller") || other.gameObject.name.Contains("Node"))) {
 			CancelInvoke("MaybeDestroy");
 			deleteTriggered = false;
             parentID = other.GetInstanceID();

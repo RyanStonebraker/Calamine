@@ -28,11 +28,14 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     void Awake()
     {
+        collidingObject = null;
+
         if (isFirstObject) {
             isFirstObject = false;
             this.GetComponent<Renderer>().material.shader = Shader.Find("Custom/GreenPulse");
             templateNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + 12, this.transform.position.y + 12, this.transform.position.z), this.transform.rotation);
         }
+
         myDepth = depthCounter;
         switch(myDepth)
         {
@@ -158,7 +161,7 @@ public class TrisDemoBoardNode : MonoBehaviour {
         }
 
         newSubNode.GetComponent<Renderer>().material.color = Color.red;
-        newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
+        //newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
         //this.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
         subNodes.Add(newSubNode);
     }

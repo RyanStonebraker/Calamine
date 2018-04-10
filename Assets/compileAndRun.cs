@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class compileAndRun : MonoBehaviour {
 
     public GameObject moveFromDrawing;
@@ -19,6 +20,7 @@ public class compileAndRun : MonoBehaviour {
     {
         if(other.gameObject.name.Contains("Controller"))
         {
+            GameObject.Find("EditorBoard").gameObject.SetActive(false);
             Debug.Log("Controller in compile/run block");
             bool handledByLoop = false;
 
