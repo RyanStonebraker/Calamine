@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Drawing : MonoBehaviour {
 
-    private SteamVR_TrackedObject trackedObject;
-    private SteamVR_Controller.Device device;
     public bool freeDraw = false;
     public GameObject PencilTip;
     public GameObject Pencil;
     public GameObject ZLOCK;
+    public bool lockZ = false;
+    public bool lockY = true;
+    public bool lockX = false;
+
+    private SteamVR_TrackedObject trackedObject;
+    private SteamVR_Controller.Device device;
     private LockZ ZLockScript;
+    private SimpleGrab simpleGrabScript;
+    private int capturedPencilID = 0;
+    
 
     private void Start()
     {
@@ -19,9 +26,11 @@ public class Drawing : MonoBehaviour {
             ZLockScript = ZLOCK.GetComponent<LockZ>();
             trackedObject = GetComponent<SteamVR_TrackedObject>();
             device = SteamVR_Controller.Input((int)trackedObject.index);
+            simpleGrabScript = gameObject.GetComponent<SimpleGrab>();
         }
         catch
         {
+            Start();
             Debug.Log("Init failed in draw start");
         }
     }
@@ -35,6 +44,29 @@ public class Drawing : MonoBehaviour {
 
     private void Update()
     {
+        if (simpleGrabScript && simpleGrabScript.objectInHand && simpleGrabScript.objectInHand.name.Contains("pencil"))
+        {
+            if (Pencil && simpleGrabScript.objectInHand && simpleGrabScript.objectInHand.GetInstanceID() == capturedPencilID)
+                goto skipDisIf;
+            capturedPencilID = simpleGrabScript.objectInHand.GetInstanceID();
+            try
+            {
+                Debug.Log("New Pencil");
+                Pencil = simpleGrabScript.objectInHand;
+                PencilTip = simpleGrabScript.objectInHand.GetComponentInChildren<DrawableArea>().PencilTip;
+                GameObject moveFromDraw = GameObject.Find("MoveFromDraw");
+                PencilTip.GetComponent<DrawableArea>().objectToMoveFromDrawing = moveFromDraw;
+                moveFromDraw.GetComponent<MoveFromDrawing>().pencilTip = PencilTip;
+            }
+            catch
+            {
+                Debug.Log("Failed to init pencil in Drawing.cs");
+            }
+        }
+        else {
+            return;
+        }
+        skipDisIf:
         if (trackedObject == null || device == null)
             Start();
 
@@ -45,7 +77,12 @@ public class Drawing : MonoBehaviour {
 
         if (ZLockScript.controllerEntered)
         {
-            Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+            if(lockZ)
+                Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+            else if(lockY)
+                Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+            else if(lockX)
+                Pencil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
             Debug.Log("Controller Recognized in ZLOCK - successful pencil ZLOCK");
         }
         else

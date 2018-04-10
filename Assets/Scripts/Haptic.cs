@@ -8,10 +8,15 @@ public class Haptic : MonoBehaviour {
     public SteamVR_Controller.Device device;
     public GameObject pencilTip;
     private DrawableArea pencilTipScript;
+    private SimpleGrab simpleGrabScript;
 
     private void Start()
     {
-        if(pencilTip)
+        simpleGrabScript = gameObject.GetComponent<SimpleGrab>();
+        if (!simpleGrabScript)
+            Debug.Log("Failed to init grab script in haptic");
+
+        if (pencilTip)
             pencilTipScript = pencilTip.GetComponent<DrawableArea>();
 
         trackedObject = GetComponent<SteamVR_TrackedObject>();
@@ -28,12 +33,27 @@ public class Haptic : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if(pencilTip && pencilTipScript.insideDrawArea)
+        if(pencilTip && pencilTipScript && pencilTipScript.insideDrawArea)
             device.TriggerHapticPulse(1000);
     }
 
     private void OnTriggerExit(Collider other)
     {
         device.TriggerHapticPulse(2000);
+    }
+
+    private void Update()
+    {
+        if (simpleGrabScript && simpleGrabScript.objectInHand && simpleGrabScript.objectInHand.name.Contains("pencil"))
+        {
+            try
+            {
+                pencilTip = simpleGrabScript.objectInHand.GetComponentInChildren<DrawableArea>().PencilTip;
+            }
+            catch
+            {
+                Debug.Log("Failed to init pencil");
+            }
+        }
     }
 }

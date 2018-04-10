@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SwitchScene : MonoBehaviour {
 
@@ -10,6 +11,5 @@ public class SwitchScene : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         switchScene = true;
-        SceneManager.LoadScene("freeworld");
     }
 }

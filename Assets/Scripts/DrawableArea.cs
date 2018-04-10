@@ -14,6 +14,8 @@ public class DrawableArea : MonoBehaviour {
 
     private void Start()
     {
+        gameObject.GetComponent<TrailRenderer>().Clear();
+        objectToMoveFromDrawing = GameObject.Find("MoveFromDraw");
         objectToMoveFromDrawingScript = objectToMoveFromDrawing.GetComponent<MoveFromDrawing>();
     }
 

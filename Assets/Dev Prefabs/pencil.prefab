@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 65130526264810044}
   - component: {fileID: 96483281885763126}
   - component: {fileID: 114818892546526376}
-  - component: {fileID: 114956723281718990}
   m_Layer: 0
   m_Name: PencilTip
   m_TagString: DrawingDevice
@@ -275,15 +274,3 @@ MonoBehaviour:
   PencilTip: {fileID: 1985424935040068}
   insideDrawArea: 0
   objectToMoveFromDrawing: {fileID: 0}
---- !u!114 &114956723281718990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1985424935040068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2a960ae1021d141b24c32136034521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DrawArea: {fileID: 0}

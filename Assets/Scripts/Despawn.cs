@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class Despawn : MonoBehaviour {
@@ -20,7 +21,9 @@ public class Despawn : MonoBehaviour {
 
     private void deleteFragments()
     {
-        Wait (DestroyTime, () => { Destroy(gameObject); });
+        Wait (DestroyTime, () => { Destroy(gameObject);
+                                   SceneManager.LoadScene("freeworld");
+                                 });
     }
 
     //Enter the world and die in 3 seconds
