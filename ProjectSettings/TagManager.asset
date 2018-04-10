@@ -36,6 +36,7 @@ TagManager:
   - DrawingDevice
   - FailOnHit
   - Goal
+  - Character
   layers:
   - Default
   - TransparentFX

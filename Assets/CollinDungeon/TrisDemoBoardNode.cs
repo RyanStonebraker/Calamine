@@ -13,8 +13,12 @@ public class TrisDemoBoardNode : MonoBehaviour {
     private int frameCountTimer = 0;
     private bool timerIsRunning = false;
     bool amITaken = false;
+    bool shouldIHaveABaby = true;
     private double timeConnected;
     private GameObject templateNode;
+
+    public float indentDistance = 0.5f;
+    public float scrollDistance = 0.55f;
 
     public static bool isFirstObject = true;
 
@@ -63,6 +67,8 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag != "Tool" && other.gameObject.tag != "Character")
+            return;
         Debug.Log("Impacted");
         try
         {
@@ -98,8 +104,8 @@ public class TrisDemoBoardNode : MonoBehaviour {
     {
         Debug.Log("Exited");
         //setPhysics(false, true); WIP
-        collidingObject = null;
-        killJoint();
+        //collidingObject = null;
+        //killJoint();
         Debug.Log("Joint Destroyed");
     }
 
@@ -111,10 +117,10 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     private void createSubnode()
     {
-        GameObject newSubNode = Instantiate(templateNode, new Vector3(this.transform.position.x - 0.5f, this.transform.position.y + 0.85f, this.transform.position.z), this.transform.rotation);
+        GameObject newSubNode = Instantiate(this.gameObject, new Vector3(this.transform.position.x + indentDistance, this.transform.position.y - scrollDistance, this.transform.position.z), this.transform.rotation);
         newSubNode.GetComponent<Renderer>().material.color = Color.red;
         newSubNode.GetComponent<Renderer>().material.shader = Shader.Find("Custom/PulseNode");
-        this.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+        //this.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
         subNodes.Add(newSubNode);
     }
 
@@ -137,12 +143,11 @@ public class TrisDemoBoardNode : MonoBehaviour {
 
     void Update()
     {
-        if (timerIsRunning && ((Time.time - timeConnected) > 2.0)) {
-            timerIsRunning = false;
+        if (amITaken && shouldIHaveABaby) {
+            //timerIsRunning = false;
+            //amITaken = false;
+            shouldIHaveABaby = false;
             createSubnode();
-            Debug.Log("Execution within if statement");
-            collidingObject = null;
-            killJoint();
 
         }
     }
