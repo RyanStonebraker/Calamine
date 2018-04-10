@@ -9,6 +9,7 @@ public class MoveFromDrawing : MonoBehaviour {
     public GameObject pencilTip;
     public float moveMultiplyer = 1f;
     public bool flipYX = false;
+    public bool flipYZ = false;
     public GameObject victoryObject;
 
     private Rigidbody rb;
@@ -58,6 +59,13 @@ public class MoveFromDrawing : MonoBehaviour {
             float temp = drawPointDifference.y;
             drawPointDifference.y = drawPointDifference.x;
             drawPointDifference.x = temp;
+        }
+        if (flipYZ)
+        {
+            // le std::swap face
+            float temp = drawPointDifference.z;
+            drawPointDifference.z = drawPointDifference.y;
+            drawPointDifference.y = temp;
         }
         Vector3 nextMovePoint = (currentPosition + drawPointDifference);
         pointCounter++;
