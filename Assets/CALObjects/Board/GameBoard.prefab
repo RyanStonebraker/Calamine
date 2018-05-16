@@ -10032,6 +10032,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes: []
+  yieldViewForCompile: 0
+  frameUpAmount: 0.000000523
 --- !u!114 &114329749156910348
 MonoBehaviour:
   m_ObjectHideFlags: 1

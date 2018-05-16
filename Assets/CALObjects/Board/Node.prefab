@@ -116,6 +116,10 @@ MonoBehaviour:
   collidingObject: {fileID: 0}
   jointBreakForce: 1000
   jointTorqueBreakForce: 1000
+  hit: 0
+  sunk: 0
+  miss: 0
+  boardType: 
 --- !u!135 &135906572576275058
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54278060036545304}
   - component: {fileID: 64207555067091462}
   m_Layer: 0
-  m_Name: pencil
+  m_Name: pencilClone
   m_TagString: Tool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

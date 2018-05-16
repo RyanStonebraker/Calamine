@@ -123,10 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff0ad46f0abfdc4ab834f3bd21c576d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getMoves: 0
   startMoving: 0
   movementPoints: []
   pencilTip: {fileID: 0}
   moveMultiplyer: 32
   flipYX: 1
+  flipYZ: 0
   victoryObject: {fileID: 1498412516903160, guid: b9dcac3dcecba0f4a86fe871f177d62b,
     type: 2}

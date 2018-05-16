@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114328682977537402}
   - component: {fileID: 114655470180862350}
   m_Layer: 0
-  m_Name: StartBlock
+  m_Name: StartBlockPlain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8c8d7c6223d5a4988a304b3a48da45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchScene: 0
 --- !u!114 &114655470180862350
 MonoBehaviour:
   m_ObjectHideFlags: 1

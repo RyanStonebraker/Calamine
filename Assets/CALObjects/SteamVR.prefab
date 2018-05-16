@@ -557,6 +557,9 @@ MonoBehaviour:
   PencilTip: {fileID: 0}
   Pencil: {fileID: 0}
   ZLOCK: {fileID: 0}
+  lockZ: 0
+  lockY: 1
+  lockX: 0
 --- !u!114 &114238145569713748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -641,6 +644,9 @@ MonoBehaviour:
   PencilTip: {fileID: 0}
   Pencil: {fileID: 0}
   ZLOCK: {fileID: 0}
+  lockZ: 0
+  lockY: 1
+  lockX: 0
 --- !u!114 &114515302559826636
 MonoBehaviour:
   m_ObjectHideFlags: 1
