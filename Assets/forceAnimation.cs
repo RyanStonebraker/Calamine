@@ -6,8 +6,11 @@ public class forceAnimation : MonoBehaviour {
 
     Animator animator;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject bouncyBall;
+    public Vector3 displacementFromFox = new Vector3(5f, 20f, 0f);
+    
+    // Use this for initialization
+    void Start () {
         animator = this.GetComponent<Animator>();
 	}
 	
@@ -20,6 +23,12 @@ public class forceAnimation : MonoBehaviour {
 
             animator.SetBool("SitStay", !animator.GetBool("SitStay"));
             Debug.Log("F registed down");
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            animator.SetTrigger("Flick");
+            Instantiate(bouncyBall, transform.position + displacementFromFox, new Quaternion());
         }
     }
 }
