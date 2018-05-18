@@ -117,6 +117,7 @@ namespace MalbersAnimations
             isInAir,               //if is Jumping or falling (Automatic: Fix Position Method)
             swim,                  //if is in Deep Water (Automatic: Swim method)
             underwater,            //While Swimming Go underwater 
+            sit,
 
            
             stun,                  //Stunned (Set by Input or callit by a property)
