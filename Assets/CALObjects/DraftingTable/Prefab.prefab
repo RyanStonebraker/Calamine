@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 4703167020223428}
   - component: {fileID: 95521113654921044}
   m_Layer: 0
-  m_Name: DraftingTablePrefab
+  m_Name: Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
