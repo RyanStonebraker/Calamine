@@ -28,7 +28,7 @@ public class TransitionText : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Semicolon))
-            changeTextWithEffect(":) TEST :)");
+        //if (Input.GetKeyDown(KeyCode.Semicolon))
+        //    changeTextWithEffect(":) TEST :)");
     }
 }
