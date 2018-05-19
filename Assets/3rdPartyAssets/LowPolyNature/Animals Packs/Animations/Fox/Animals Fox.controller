@@ -13,127 +13,133 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Horizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Stand
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: _Jump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Fall
+    m_Controller: {fileID: 0}
+  - m_Name: Fall!
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Attack1
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Stunned
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Damaged
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Shift
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Death
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Swim
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Action
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IDAction
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IDInt
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IDFloat
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Slope
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Type
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Sit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: SitStay
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Flick
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: CountedLoop
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: Point
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Fox
@@ -1937,7 +1943,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 15
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110236326}
@@ -2102,7 +2108,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Swim
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 110729810}
   m_DstState: {fileID: 0}
@@ -2168,7 +2174,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110270226}
@@ -2237,7 +2243,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110299786}
@@ -2591,7 +2597,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Swim
@@ -2687,7 +2693,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Vertical
     m_EventTreshold: 2.1
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Swim
@@ -3092,7 +3098,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Stunned
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Swim
@@ -3233,7 +3239,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110236326}
@@ -5155,10 +5161,6 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: 110979786}
   m_StateMachineTransitions:
-  - first: {fileID: 1107402830284789084}
-    second: []
-  - first: {fileID: 110703742}
-    second: []
   - first: {fileID: 110743868}
     second: []
   - first: {fileID: 110750744}
@@ -5166,7 +5168,11 @@ AnimatorStateMachine:
     - {fileID: 110982718}
     - {fileID: 110956508}
     - {fileID: 110968886}
+  - first: {fileID: 110703742}
+    second: []
   - first: {fileID: 110789220}
+    second: []
+  - first: {fileID: 1107402830284789084}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -156, y: -264, z: 0}
@@ -5397,15 +5403,15 @@ AnimatorStateMachine:
   - first: {fileID: 110773768}
     second:
     - {fileID: 110965176}
+  - first: {fileID: 1107995529644908738}
+    second:
+    - {fileID: 1109450591020933970}
   - first: {fileID: 1107127498828662126}
     second:
     - {fileID: 1109271157559818664}
   - first: {fileID: 1107281189141816686}
     second:
     - {fileID: 1109016467390974050}
-  - first: {fileID: 1107995529644908738}
-    second:
-    - {fileID: 1109450591020933970}
   m_StateMachineBehaviours:
   - {fileID: 114696246678299918}
   m_AnyStatePosition: {x: 60, y: -96, z: 0}
@@ -5603,7 +5609,7 @@ AnimatorTransition:
     m_ConditionEvent: Swim
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110205660}
@@ -7895,7 +7901,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: IDInt
@@ -8015,7 +8021,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: IDInt
@@ -8108,7 +8114,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
@@ -8216,7 +8222,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Swim
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102000013903544450}
@@ -9149,7 +9155,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Swim
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102255121222439484}
@@ -11104,7 +11110,7 @@ AnimatorTransition:
     m_ConditionEvent: Swim
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
+    m_ConditionEvent: Fall!
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102000011231110002}
