@@ -2867,11 +2867,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1631812462638756, guid: 14b5437c9d8e89d419fa5f03a920f0e3, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 1605577309178930, guid: 14b5437c9d8e89d419fa5f03a920f0e3, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: MainCamera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14b5437c9d8e89d419fa5f03a920f0e3, type: 2}
