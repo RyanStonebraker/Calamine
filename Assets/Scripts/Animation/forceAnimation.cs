@@ -15,6 +15,7 @@ public class forceAnimation : MonoBehaviour {
     public GameObject loopBodyObject;
     public GameObject makeBallBlock;
     public GameObject interactableCountLoop;
+    public GameObject startBlock;
     public Vector3 displacementFromFox = new Vector3(5f, 20f, 0f);
     public Vector3 displacementFromSteamVR = new Vector3(1.17f, -3.8f, -14.5f);
     public UnityEngine.UI.Text TayAIUIText;
@@ -111,7 +112,16 @@ public class forceAnimation : MonoBehaviour {
                                    new Quaternion());
     }
 
-private void animateNextScene()
+    // TODO (Tristan): In and ambient animation
+    private void spawnStartBlock()
+    {
+        GameObject spawnedStartBlock = Instantiate(startBlock,
+                                   GameObject.Find("SteamVR").transform.position +
+                                   new Vector3(1.528087f, -2.27291f, -1.7185f),
+                                   new Quaternion());
+    }
+
+    private void animateNextScene()
     {
         sceneNumber++;
         switch (sceneNumber)
@@ -192,6 +202,7 @@ private void animateNextScene()
 
             case 17:
                 tayAISpeechBubble.changeTextWithEffect("Fantastic! Now all we need to do is run the program!");
+                Invoke("spawnStartBlock", 1f);
                 /* Run button appears and 20 balls bounce in run scene */
                 break;
 
