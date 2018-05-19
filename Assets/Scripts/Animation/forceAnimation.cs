@@ -110,6 +110,8 @@ public class forceAnimation : MonoBehaviour {
                                    GameObject.Find("SteamVR").transform.position +
                                    new Vector3(1.528087f, -2.27291f, -1.7185f),
                                    new Quaternion());
+
+        countLoop.GetComponent<Animator>().SetTrigger("FlipIn");
     }
 
     // TODO (Tristan): In and ambient animation
@@ -119,6 +121,8 @@ public class forceAnimation : MonoBehaviour {
                                    GameObject.Find("SteamVR").transform.position +
                                    new Vector3(1.528087f, -2.27291f, -1.7185f),
                                    new Quaternion());
+
+        spawnedStartBlock.GetComponent<Animator>().SetTrigger("SpawnInTwitch");
     }
 
     private void animateNextScene()

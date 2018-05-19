@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 136324229501589774}
   - component: {fileID: 136141052813004140}
   - component: {fileID: 136573338753251220}
+  - component: {fileID: 95039073832256460}
   m_Layer: 0
   m_Name: Larry The Pivot With Body And Labels
   m_TagString: FlowOfControl
@@ -263,8 +264,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1301371142509978}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000087821296, y: -0.000017231396, z: 0.000000010771601}
+  m_LocalRotation: {x: -0.000000013038516, y: 0.000000029802322, z: 0.60814416, w: 0.7938267}
+  m_LocalPosition: {x: 0.00008782169, y: -0.00001703915, z: 0.0000004326051}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children:
   - {fileID: 4900382692414830}
@@ -272,7 +273,7 @@ Transform:
   - {fileID: 4737440112791310}
   m_Father: {fileID: 4785227142157880}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 74.911}
 --- !u!4 &4372959846979510
 Transform:
   m_ObjectHideFlags: 1
@@ -280,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221488084043206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4650726, y: 44.848, z: 186.4616}
+  m_LocalPosition: {x: 1.0912933, y: 44.294, z: 184.91438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4635638501124968}
@@ -670,6 +671,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95039073832256460
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221488084043206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5bc35eefe2418d428c3ed1e736bc83e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114043834485370906
 MonoBehaviour:
   m_ObjectHideFlags: 1
