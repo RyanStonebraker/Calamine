@@ -1401,6 +1401,18 @@ MonoBehaviour:
   jointBreakForce: 100
   jointTorqueBreakForce: 100
   collidedOutlineWidth: 0.11
+--- !u!114 &1701930434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1701930432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0992a5743926b419703924828dc9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerEntered: 0
 --- !u!54 &1701930437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1472,6 +1484,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 61bf516f979a380419939119dfc222bb, type: 2}
+    - target: {fileID: 1470315904862702, guid: 72e20323b9de06647a41841675935a5e, type: 2}
+      propertyPath: m_Name
+      value: URSADrawingCanvas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72e20323b9de06647a41841675935a5e, type: 2}
   m_IsPrefabParent: 0
