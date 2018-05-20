@@ -1,11 +1,11 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Outlined/ModelProjection" {
+Shader "Outlined/ModelProjectionDetailed" {
 
 	/*These variables define the width and color of the outline*/
 	Properties{
 		_OutlineColor("Outline Color", Color) = (0,0,0,1)
-		_Outline("Outline width", Range(0.0, 0.99)) = .005
+		_Outline("Outline width", Range(0.0, 5.0)) = .005
 	}
 
 		CGINCLUDE

@@ -15,6 +15,7 @@ public class BlockDetectLogic : MonoBehaviour {
     public int jointBreakForce = 100;
     public int jointTorqueBreakForce = 100;
     private int totalObjects = 0;
+    public float collidedOutlineWidth = 0.11f;
 
 
 //    __ ___     __ __              __    
@@ -53,19 +54,35 @@ public class BlockDetectLogic : MonoBehaviour {
         collidingObject.transform.position = gameObject.transform.position;
     }
 
-    void OnTriggerEnter(Collider other)
+    private void snapObjectToSelf(ref Collider other)
     {
         try
         {
-                setCollidingObject(other);
-                snap();
+            setCollidingObject(other);
+            snap();
 
-                joinObject();
+            joinObject();
         }
         catch
         {
             collidingObject = null;
         }
+    }
+
+    private void modifyObjectShaders()
+    {
+        /*Maybe we should check the type of object here*/
+        Renderer collidingObjRend;
+
+        collidingObjRend = collidingObject.GetComponent<MeshRenderer>();
+        collidingObjRend.material.shader = Shader.Find("Outlined/ModelProjectionDetailed");
+        collidingObjRend.material.SetFloat("_Outline", collidedOutlineWidth);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        snapObjectToSelf(ref other);
+        modifyObjectShaders();
     }
 
     void OnTriggerStay(Collider other)
