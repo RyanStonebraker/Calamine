@@ -45,18 +45,26 @@ public class AmphitheatreBlockController : MonoBehaviour {
       block.GetComponent<Rigidbody>().useGravity = true;
     }
   }
+
+  void exitSpinOut() {
+    startParent.parent.GetComponent<Animator>().enabled = true;
+    Destroy(startParent.parent.gameObject, 0.9f);
+  }
+  
   void OnTriggerExit(Collider other) {
         if (block && other.gameObject.GetInstanceID() == block.GetInstanceID())
         {
             if (gameObject.transform.parent == startParent) {
               Vector3 childPos = block.transform.position;
-              block.transform.SetParent(startParent, true);
+              block.transform.SetParent(startParent.parent);
             }
             other.transform.localScale = sourceBlock.transform.localScale;
             if (infiniteSpawn)
               loadPrefabBlock();
-            else
+            else {
+              Invoke("exitSpinOut", 1.5f);
               block = null;
+            }
         }
   }
 }
