@@ -8,6 +8,7 @@ public class forceAnimation : MonoBehaviour {
     private uint sceneNumber;
     private TransitionText tayAISpeechBubble;
     private GameObject nonInteractableCountLoop;
+    private GameObject steamVR;
 
     public GameObject bouncyBall;
     public GameObject countedLoopWithLabel;
@@ -16,7 +17,6 @@ public class forceAnimation : MonoBehaviour {
     public GameObject makeBallBlock;
     public GameObject interactableCountLoop;
     public GameObject startBlock;
-    public Vector3 displacementFromFox = new Vector3(5f, 20f, 0f);
     public Vector3 displacementFromSteamVR = new Vector3(1.17f, -3.8f, -14.5f);
     public UnityEngine.UI.Text TayAIUIText;
 
@@ -26,6 +26,7 @@ public class forceAnimation : MonoBehaviour {
         animator = this.GetComponent<Animator>();
         sceneNumber = 0;
         tayAISpeechBubble = TayAIUIText.GetComponent<TransitionText>();
+        steamVR = GameObject.Find("SteamVR");
 	}
 	
     private void spawnCountLoop()
@@ -60,7 +61,7 @@ public class forceAnimation : MonoBehaviour {
     private void flickTailSpawnBall()
     {
         animator.SetTrigger("Flick");
-        Instantiate(bouncyBall, transform.position + displacementFromFox, new Quaternion());
+        Instantiate(bouncyBall, steamVR.transform.position + new Vector3(-2.170913f, 20f, -4.0205f), new Quaternion());
     }
 
     private void sitAndSpawnCountLoop()
@@ -93,7 +94,7 @@ public class forceAnimation : MonoBehaviour {
     private void spawnMakeBallBlock()
     {
         GameObject ballBlock = Instantiate(makeBallBlock,
-                                   GameObject.Find("SteamVR").transform.position +
+                                   steamVR.transform.position +
                                    new Vector3(1.528087f, -2.27291f, -1.7185f),
                                    new Quaternion());
 
@@ -107,7 +108,7 @@ public class forceAnimation : MonoBehaviour {
     private void spawnInteractableCountLoop() 
     {
         GameObject countLoop = Instantiate(interactableCountLoop,
-                                   GameObject.Find("SteamVR").transform.position +
+                                   steamVR.transform.position +
                                    new Vector3(1.528087f, -2.27291f, -1.7185f),
                                    new Quaternion());
 
@@ -118,7 +119,7 @@ public class forceAnimation : MonoBehaviour {
     private void spawnStartBlock()
     {
         GameObject spawnedStartBlock = Instantiate(startBlock,
-                                   GameObject.Find("SteamVR").transform.position +
+                                   steamVR.transform.position +
                                    new Vector3(1.528087f, -2.27291f, -1.7185f),
                                    new Quaternion());
 
