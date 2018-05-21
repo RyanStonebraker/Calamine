@@ -18,6 +18,7 @@ public class BlockDetectLogic : MonoBehaviour {
     public float collidedOutlineWidth = 0.02f;
 	public float objScaleFactor = 0.5f;
 	private Material outlineMaterial;
+	private int objectsOnBoard = 0;
 
 
 //    __ ___     __ __              __    
@@ -101,13 +102,31 @@ public class BlockDetectLogic : MonoBehaviour {
         }
     }
 
-    public void modifyTransformAndRotation(GameObject objectToModify)
+    public void modifyTransformAndRotation_PHIL(GameObject objectToModify)
     {
 		/*Spin the object and make it dizzy*/
 
         //Vector3 parallelVec = gameObject.transform.position - objectToModify.transform.position;
         //objectToModify.transform.rotation = Quaternion.FromToRotation(objectToModify.transform.up, parallelVec) * objectToModify.transform.localRotation;
 		Quaternion parallelQuat = Quaternion.Euler(64.0f, 0.0f, 0.0f);
+		objectToModify.transform.rotation = parallelQuat;
+
+		/*Scale the object uniformly*/
+		objectToModify.transform.localScale *= 0.8f;
+
+		/*Shove the object onto the table*/
+		Vector3 newPos = objectToModify.transform.position;
+		newPos.y -= 0.3f;
+		objectToModify.transform.position = newPos;
+    }
+
+	public void modifyTransformAndRotation_FOX(GameObject objectToModify)
+	{
+		/*Spin the object and make it dizzy*/
+
+		//Vector3 parallelVec = gameObject.transform.position - objectToModify.transform.position;
+		//objectToModify.transform.rotation = Quaternion.FromToRotation(objectToModify.transform.up, parallelVec) * objectToModify.transform.localRotation;
+		Quaternion parallelQuat = Quaternion.Euler(-28.03f,-0.57f, 89.0120f);
 		objectToModify.transform.rotation = parallelQuat;
 
 
@@ -117,13 +136,13 @@ public class BlockDetectLogic : MonoBehaviour {
 		//objectToModify.transform.localScale = newScale;
 
 		/*Scale the object uniformly*/
-		objectToModify.transform.localScale *= objScaleFactor;
+		objectToModify.transform.localScale *= 0.8f;
 
 		/*Shove the object onto the table*/
 		Vector3 newPos = objectToModify.transform.position;
-		newPos.y -= 1.1f;
+		newPos.y -= 0.6f;
 		objectToModify.transform.position = newPos;
-    }
+	}
 
     void OnTriggerEnter(Collider other)
     {
@@ -131,7 +150,25 @@ public class BlockDetectLogic : MonoBehaviour {
         //snapObjectToSelf(ref other);
         //modifyObjectShaders_Recurse(other.gameObject);
 		modifySingleObjectShader(other.gameObject);
-        modifyTransformAndRotation(other.gameObject);
+
+		Vector3 indentTransform = new Vector3(0.0f,0.0f, 0.0f);
+
+		if (other.gameObject.name.IndexOf ("Fox") != -1) {
+			indentTransform.x = (-1.0f + -1.0f * (float)objectsOnBoard);
+			indentTransform.y = 0.3f;
+			indentTransform.z += 0.0f;
+			other.gameObject.transform.position += indentTransform;
+			modifyTransformAndRotation_FOX (other.gameObject);
+		} else {
+			indentTransform.x = (0.1f + 0.95f * (float)objectsOnBoard);
+			indentTransform.y = -0.1f;
+			indentTransform.z += 0.2f;
+			other.gameObject.transform.position += indentTransform;
+			modifyTransformAndRotation_PHIL (other.gameObject);
+		}
+
+		objectsOnBoard++;
+
 
     }
 
