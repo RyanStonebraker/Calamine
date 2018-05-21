@@ -10,8 +10,12 @@ public class AmphitheatreBlockController : MonoBehaviour {
   public float scaleFactor = 0.8f;
   private GameObject block;
 
+  public Vector3 shiftCenter;
+
+  public bool infiniteSpawn = true;
+
   void loadPrefabBlock () {
-      Vector3 center = GetComponent<Renderer>().bounds.center;
+      Vector3 center = GetComponent<Renderer>().bounds.center + shiftCenter;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
       block.AddComponent<UnusedDelete>();
       Bounds thisBound = GetComponent<Renderer>().bounds;
@@ -43,7 +47,8 @@ public class AmphitheatreBlockController : MonoBehaviour {
             // block.GetComponent<Rigidbody>().isKinematic = false;
             // block.GetComponent<Rigidbody>().useGravity = true;
             other.transform.localScale = sourceBlock.transform.localScale;
-            loadPrefabBlock();
+            if (infiniteSpawn)
+              loadPrefabBlock();
         }
   }
 }
