@@ -17,6 +17,7 @@ public class AmphitheatreBlockController : MonoBehaviour {
   void loadPrefabBlock () {
       Vector3 center = GetComponent<Renderer>().bounds.center + shiftCenter;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
+      block.transform.parent = gameObject.transform;
       block.AddComponent<UnusedDelete>();
       Bounds thisBound = GetComponent<Renderer>().bounds;
       Bounds iconBound = block.GetComponent<Collider>().bounds;
@@ -29,7 +30,8 @@ public class AmphitheatreBlockController : MonoBehaviour {
       block.GetComponent<Rigidbody>().useGravity = false;
     }
   void Start () {
-    blockIcon = Instantiate (sourceBlock, new Vector3(10,10,10), new Quaternion(0,0,0,0));
+    blockIcon = Instantiate (sourceBlock, new Vector3(-100,-100,-100), new Quaternion(0,0,0,0));
+    blockIcon.transform.parent = gameObject.transform.parent;
     blockIcon.transform.localScale = new Vector3(blockIcon.transform.localScale.x * scaleFactor, blockIcon.transform.localScale.y * scaleFactor, blockIcon.transform.localScale.z * scaleFactor);
     loadPrefabBlock();
   }
