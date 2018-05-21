@@ -19,6 +19,8 @@ public class forceAnimation : MonoBehaviour {
     public GameObject interactableCountLoop;
     public GameObject startBlock;
     public Vector3 displacementFromSteamVR = new Vector3(1.17f, -3.8f, -14.5f);
+
+    public GameObject playArea;
     public UnityEngine.UI.Text TayAIUIText;
 
 
@@ -62,7 +64,9 @@ public class forceAnimation : MonoBehaviour {
     private void flickTailSpawnBall()
     {
         animator.SetTrigger("Flick");
-        Instantiate(bouncyBall, steamVR.transform.position + new Vector3(-2.170913f, 20f, -4.0205f), new Quaternion());
+        Vector3 playAreaCenter = playArea.transform.position;
+        GameObject spawnedBall = Instantiate(bouncyBall, new Vector3(playAreaCenter.x, playAreaCenter.y + 20f, playAreaCenter.z), new Quaternion());
+        Destroy(spawnedBall, 10f);
     }
 
     private void sitAndSpawnCountLoop()

@@ -39,6 +39,7 @@ TagManager:
   - Character
   - Fragment
   - FlowOfControl
+  - PlayArea
   layers:
   - Default
   - TransparentFX
