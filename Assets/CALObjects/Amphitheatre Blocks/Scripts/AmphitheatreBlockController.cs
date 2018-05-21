@@ -14,6 +14,8 @@ public class AmphitheatreBlockController : MonoBehaviour {
 
   public bool infiniteSpawn = true;
 
+  private Transform startParent;
+
   void loadPrefabBlock () {
       Vector3 center = GetComponent<Renderer>().bounds.center + shiftCenter;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
@@ -30,6 +32,7 @@ public class AmphitheatreBlockController : MonoBehaviour {
       block.GetComponent<Rigidbody>().useGravity = false;
     }
   void Start () {
+    startParent = gameObject.transform.parent;
     blockIcon = Instantiate (sourceBlock, new Vector3(-100,-100,-100), new Quaternion(0,0,0,0));
     blockIcon.transform.parent = gameObject.transform.parent;
     blockIcon.transform.localScale = new Vector3(blockIcon.transform.localScale.x * scaleFactor, blockIcon.transform.localScale.y * scaleFactor, blockIcon.transform.localScale.z * scaleFactor);
@@ -43,14 +46,17 @@ public class AmphitheatreBlockController : MonoBehaviour {
     }
   }
   void OnTriggerExit(Collider other) {
-        if (other.gameObject.GetInstanceID() == block.GetInstanceID())
+        if (block && other.gameObject.GetInstanceID() == block.GetInstanceID())
         {
-            // NOTE: These may or may not be needed for actual VR
-            // block.GetComponent<Rigidbody>().isKinematic = false;
-            // block.GetComponent<Rigidbody>().useGravity = true;
+            if (gameObject.transform.parent == startParent) {
+              Vector3 childPos = block.transform.position;
+              block.transform.SetParent(startParent, true);
+            }
             other.transform.localScale = sourceBlock.transform.localScale;
             if (infiniteSpawn)
               loadPrefabBlock();
+            else
+              block = null;
         }
   }
 }
