@@ -69,20 +69,39 @@ public class BlockDetectLogic : MonoBehaviour {
         }
     }
 
-    private void modifyObjectShaders()
+    private void modifySingleObjectShader(GameObject theObj)
     {
-        /*Maybe we should check the type of object here*/
         Renderer collidingObjRend;
 
-        collidingObjRend = collidingObject.GetComponent<MeshRenderer>();
+        collidingObjRend = theObj.GetComponent<MeshRenderer>();
         collidingObjRend.material.shader = Shader.Find("Outlined/ModelProjectionDetailed");
         collidingObjRend.material.SetFloat("_Outline", collidedOutlineWidth);
+    }
+
+    private void modifyObjectShaders_Recurse(GameObject objectToModify)
+    {
+        /*Maybe we should check the type of object here*/
+
+        /*Apply the shader to the object that actually hit the board*/
+        if (objectToModify.GetComponent<MeshRenderer>() != null)
+            modifySingleObjectShader(objectToModify);
+
+        /*If the GameObject that hit the board has children, apply the shader to them too*/
+        for (int i = 0; i < objectToModify.transform.childCount; i++)
+        {
+            GameObject subObj = objectToModify.transform.GetChild(i).gameObject;
+            if (objectToModify.GetComponent<MeshRenderer>() != null)
+                modifySingleObjectShader(subObj);
+            if (subObj.transform.childCount != 0)
+                modifyObjectShaders_Recurse(subObj);
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         snapObjectToSelf(ref other);
-        modifyObjectShaders();
+        //modifyObjectShaders_Recurse(other.gameObject);
+        modifySingleObjectShader(other.gameObject);
     }
 
     void OnTriggerStay(Collider other)
