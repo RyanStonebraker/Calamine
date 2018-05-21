@@ -14,9 +14,12 @@ public class AmphitheatreBlockController : MonoBehaviour {
 
   public bool infiniteSpawn = true;
 
+  private Transform startParent;
+
   void loadPrefabBlock () {
       Vector3 center = GetComponent<Renderer>().bounds.center + shiftCenter;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
+      block.transform.parent = gameObject.transform;
       block.AddComponent<UnusedDelete>();
       Bounds thisBound = GetComponent<Renderer>().bounds;
       Bounds iconBound = block.GetComponent<Collider>().bounds;
@@ -29,7 +32,9 @@ public class AmphitheatreBlockController : MonoBehaviour {
       block.GetComponent<Rigidbody>().useGravity = false;
     }
   void Start () {
-    blockIcon = Instantiate (sourceBlock, new Vector3(10,10,10), new Quaternion(0,0,0,0));
+    startParent = gameObject.transform.parent;
+    blockIcon = Instantiate (sourceBlock, new Vector3(-100,-100,-100), new Quaternion(0,0,0,0));
+    blockIcon.transform.parent = gameObject.transform.parent;
     blockIcon.transform.localScale = new Vector3(blockIcon.transform.localScale.x * scaleFactor, blockIcon.transform.localScale.y * scaleFactor, blockIcon.transform.localScale.z * scaleFactor);
     loadPrefabBlock();
   }
@@ -40,15 +45,26 @@ public class AmphitheatreBlockController : MonoBehaviour {
       block.GetComponent<Rigidbody>().useGravity = true;
     }
   }
+
+  void exitSpinOut() {
+    startParent.parent.GetComponent<Animator>().enabled = true;
+    Destroy(startParent.parent.gameObject, 0.9f);
+  }
+  
   void OnTriggerExit(Collider other) {
-        if (other.gameObject.GetInstanceID() == block.GetInstanceID())
+        if (block && other.gameObject.GetInstanceID() == block.GetInstanceID())
         {
-            // NOTE: These may or may not be needed for actual VR
-            // block.GetComponent<Rigidbody>().isKinematic = false;
-            // block.GetComponent<Rigidbody>().useGravity = true;
+            if (gameObject.transform.parent == startParent) {
+              Vector3 childPos = block.transform.position;
+              block.transform.SetParent(startParent.parent);
+            }
             other.transform.localScale = sourceBlock.transform.localScale;
             if (infiniteSpawn)
               loadPrefabBlock();
+            else {
+              Invoke("exitSpinOut", 1.5f);
+              block = null;
+            }
         }
   }
 }
