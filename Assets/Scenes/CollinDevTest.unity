@@ -1090,7 +1090,8 @@ MonoBehaviour:
   collidingObject: {fileID: 0}
   jointBreakForce: 100
   jointTorqueBreakForce: 100
-  collidedOutlineWidth: 0.11
+  collidedOutlineWidth: 0.01
+  objScaleFactor: 0.2
 --- !u!114 &1701930434
 MonoBehaviour:
   m_ObjectHideFlags: 0

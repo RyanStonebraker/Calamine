@@ -16,6 +16,7 @@ public class BlockDetectLogic : MonoBehaviour {
     public int jointBreakForce = 100000;
     public int jointTorqueBreakForce = 100000;
     public float collidedOutlineWidth = 0.02f;
+	public float objScaleFactor = 0.5f;
 	private Material outlineMaterial;
 
 
@@ -78,6 +79,7 @@ public class BlockDetectLogic : MonoBehaviour {
         //collidingObjRend.material.shader = Shader.Find("Outlined/ModelProjectionDetailed");
 		//collidingObjRend.material.SetFloat("_Outline", collidedOutlineWidth);
 		collidingObjRend.material = outlineMaterial;
+		//collidingObjRend.material.SetFloat ("_Outline", collidedOutlineWidth);
     }
 
     private void modifyObjectShaders_Recurse(GameObject objectToModify)
@@ -110,9 +112,12 @@ public class BlockDetectLogic : MonoBehaviour {
 
 
 		/*Squash the object*/
-		Vector3 newScale = objectToModify.transform.localScale;
-		newScale.z = 0.1f;
-		objectToModify.transform.localScale = newScale;
+		//Vector3 newScale = objectToModify.transform.localScale;
+		//newScale.z = 0.1f;
+		//objectToModify.transform.localScale = newScale;
+
+		/*Scale the object uniformly*/
+		objectToModify.transform.localScale *= objScaleFactor;
 
 		/*Shove the object onto the table*/
 		Vector3 newPos = objectToModify.transform.position;
