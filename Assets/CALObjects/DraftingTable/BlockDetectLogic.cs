@@ -12,10 +12,11 @@ public class BlockDetectLogic : MonoBehaviour {
 //|___/\__,_/_/  /_/\__,_/_.___/_/\___/____/  
 
     public GameObject collidingObject = null;
-    public int jointBreakForce = 100;
-    public int jointTorqueBreakForce = 100;
+    /*In the script from the old board, these values were 100*/
+    public int jointBreakForce = 100000;
+    public int jointTorqueBreakForce = 100000;
     private int totalObjects = 0;
-    public float collidedOutlineWidth = 0.11f;
+    public float collidedOutlineWidth = 0.5f;
 
 
 //    __ ___     __ __              __    
@@ -97,11 +98,21 @@ public class BlockDetectLogic : MonoBehaviour {
         }
     }
 
+    public void modifyTransformAndRotation(GameObject objectToModify)
+    {
+        Vector3 parallelVec = gameObject.transform.position - objectToModify.transform.position;
+        objectToModify.transform.rotation = Quaternion.FromToRotation(objectToModify.transform.up, parallelVec) * objectToModify.transform.localRotation;
+        //objectToModify.transform.localRotation
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        snapObjectToSelf(ref other);
+        other.GetComponent<Rigidbody>().isKinematic = true;
+        //snapObjectToSelf(ref other);
         //modifyObjectShaders_Recurse(other.gameObject);
         modifySingleObjectShader(other.gameObject);
+        modifyTransformAndRotation(other.gameObject);
+
     }
 
     void OnTriggerStay(Collider other)

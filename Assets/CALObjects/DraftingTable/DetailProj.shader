@@ -4,7 +4,7 @@ Shader "Outlined/ModelProjectionDetailed" {
 
 	/*These variables define the width and color of the outline*/
 	Properties{
-		_OutlineColor("Outline Color", Color) = (0,0,0,1)
+		_OutlineColor("Outline Color", Color) = (1,1,1,1)
 		_Outline("Outline width", Range(0.0, 5.0)) = .005
 	}
 
