@@ -15,8 +15,8 @@ public class BlockDetectLogic : MonoBehaviour {
     /*In the script from the old board, these values were 100*/
     public int jointBreakForce = 100000;
     public int jointTorqueBreakForce = 100000;
-    private int totalObjects = 0;
-    public float collidedOutlineWidth = 0.5f;
+    public float collidedOutlineWidth = 0.02f;
+	private Material outlineMaterial;
 
 
 //    __ ___     __ __              __    
@@ -75,8 +75,9 @@ public class BlockDetectLogic : MonoBehaviour {
         Renderer collidingObjRend;
 
         collidingObjRend = theObj.GetComponent<MeshRenderer>();
-        collidingObjRend.material.shader = Shader.Find("Outlined/ModelProjectionDetailed");
-        collidingObjRend.material.SetFloat("_Outline", collidedOutlineWidth);
+        //collidingObjRend.material.shader = Shader.Find("Outlined/ModelProjectionDetailed");
+		//collidingObjRend.material.SetFloat("_Outline", collidedOutlineWidth);
+		collidingObjRend.material = outlineMaterial;
     }
 
     private void modifyObjectShaders_Recurse(GameObject objectToModify)
@@ -100,9 +101,23 @@ public class BlockDetectLogic : MonoBehaviour {
 
     public void modifyTransformAndRotation(GameObject objectToModify)
     {
-        Vector3 parallelVec = gameObject.transform.position - objectToModify.transform.position;
-        objectToModify.transform.rotation = Quaternion.FromToRotation(objectToModify.transform.up, parallelVec) * objectToModify.transform.localRotation;
-        //objectToModify.transform.localRotation
+		/*Spin the object and make it dizzy*/
+
+        //Vector3 parallelVec = gameObject.transform.position - objectToModify.transform.position;
+        //objectToModify.transform.rotation = Quaternion.FromToRotation(objectToModify.transform.up, parallelVec) * objectToModify.transform.localRotation;
+		Quaternion parallelQuat = Quaternion.Euler(64.0f, 0.0f, 0.0f);
+		objectToModify.transform.rotation = parallelQuat;
+
+
+		/*Squash the object*/
+		Vector3 newScale = objectToModify.transform.localScale;
+		newScale.z = 0.1f;
+		objectToModify.transform.localScale = newScale;
+
+		/*Shove the object onto the table*/
+		Vector3 newPos = objectToModify.transform.position;
+		newPos.y -= 1.1f;
+		objectToModify.transform.position = newPos;
     }
 
     void OnTriggerEnter(Collider other)
@@ -110,7 +125,7 @@ public class BlockDetectLogic : MonoBehaviour {
         other.GetComponent<Rigidbody>().isKinematic = true;
         //snapObjectToSelf(ref other);
         //modifyObjectShaders_Recurse(other.gameObject);
-        modifySingleObjectShader(other.gameObject);
+		modifySingleObjectShader(other.gameObject);
         modifyTransformAndRotation(other.gameObject);
 
     }
@@ -139,6 +154,11 @@ public class BlockDetectLogic : MonoBehaviour {
         collidingObject.GetComponent<Rigidbody>().isKinematic = kinematic;
         collidingObject.GetComponent<Rigidbody>().useGravity = gravity;
     }
+
+	void Awake()
+	{
+		outlineMaterial = Resources.Load("OutlineMat", typeof(Material)) as Material;
+	}
 
     void Update()
     {

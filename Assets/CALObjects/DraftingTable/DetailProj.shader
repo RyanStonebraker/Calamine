@@ -5,7 +5,7 @@ Shader "Outlined/ModelProjectionDetailed" {
 	/*These variables define the width and color of the outline*/
 	Properties{
 		_OutlineColor("Outline Color", Color) = (1,1,1,1)
-		_Outline("Outline width", Range(0.0, 5.0)) = .005
+		_Outline("Outline width", float) = .005
 	}
 
 		CGINCLUDE
@@ -31,12 +31,14 @@ Shader "Outlined/ModelProjectionDetailed" {
 		/*Multiply the vertex data by the modelview projection matrix*/
 		theObj.pos = UnityObjectToClipPos(vertexData.vertex);
 
-		/*Find normal by multiplying current modelview matrix by the data's normal*/
+		/*Find normal of this object*/
 		float3 norm = mul((float3x3)UNITY_MATRIX_IT_MV, vertexData.normal);
 		float2 offset = TransformViewToProjection(norm.xy);
 
 		//theObj.pos.xy += offset * theObj.pos.z * _Outline;
-		theObj.pos.xy += offset*theObj.pos.z*_Outline;
+		theObj.pos.xy += offset * 5.0f * _Outline;
+
+		//theObj.pos.xy += 0.1f;
 
 		/*Set the color that we want to paint the outline*/
 		theObj.color = _OutlineColor;
