@@ -40,6 +40,7 @@ TagManager:
   - Fragment
   - FlowOfControl
   - PlayArea
+  - Compile
   layers:
   - Default
   - TransparentFX

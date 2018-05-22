@@ -20,6 +20,8 @@ public class forceAnimation : MonoBehaviour {
     public GameObject startBlock;
     public Vector3 displacementFromSteamVR = new Vector3(1.17f, -3.8f, -14.5f);
 
+    public SteamVR_TrackedController trackedController;
+
     public GameObject playArea;
     public UnityEngine.UI.Text TayAIUIText;
 
@@ -267,7 +269,7 @@ public class forceAnimation : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Y))
             spawnMakeBallBlock();
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || trackedController.padPressed)
             animateNextScene();
     }
 }
