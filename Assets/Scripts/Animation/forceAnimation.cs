@@ -272,7 +272,7 @@ public class forceAnimation : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Y))
             spawnMakeBallBlock();
 
-        if (buttonCoolDown && Input.GetKeyDown(KeyCode.RightArrow) || trackedController.padPressed) {
+        if (buttonCoolDown && (Input.GetKeyDown(KeyCode.RightArrow) || trackedController.padPressed)) {
             buttonCoolDown = false;
             Invoke("resetCoolDown", 1.0f);
             animateNextScene();
