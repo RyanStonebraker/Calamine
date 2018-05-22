@@ -146,6 +146,9 @@ public class BlockDetectLogic : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Tool")
+            return;
+
         other.GetComponent<Rigidbody>().isKinematic = true;
         //snapObjectToSelf(ref other);
         //modifyObjectShaders_Recurse(other.gameObject);
