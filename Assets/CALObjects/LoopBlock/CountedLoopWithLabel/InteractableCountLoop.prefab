@@ -38,7 +38,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4969452893177426}
-  - component: {fileID: 114499477370135482}
   - component: {fileID: 23535016012898668}
   - component: {fileID: 95686097107452852}
   m_Layer: 0
@@ -247,6 +246,7 @@ GameObject:
   - component: {fileID: 4168191849930576}
   - component: {fileID: 136618396500020464}
   - component: {fileID: 54097760894751878}
+  - component: {fileID: 114575436788432990}
   m_Layer: 0
   m_Name: InteractableCountLoop
   m_TagString: FlowOfControl
@@ -290,7 +290,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892540215060110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.705, y: 45.01, z: 186.717}
+  m_LocalPosition: {x: 0.076, y: 45, z: 185.906}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4969452893177426}
@@ -802,12 +802,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1ea7f20f7f55549a933678a1dc1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114499477370135482
+--- !u!114 &114575436788432990
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1229237063355586}
+  m_GameObject: {fileID: 1892540215060110}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01f43b3a539fe3a42a945573c3ae0bfb, type: 3}
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f239469242b49e748999df291124f163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loop: {fileID: 1229237063355586}
+  loop: {fileID: 1892540215060110}
 --- !u!114 &114837782223489134
 MonoBehaviour:
   m_ObjectHideFlags: 1
