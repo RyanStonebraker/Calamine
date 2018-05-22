@@ -111,11 +111,34 @@ public class forceAnimation : MonoBehaviour {
         // this should be taken care of inside of the spawn ball block script.
     }
 
-    private void spawnInteractableCountLoop() 
+        private void spawnShiftedMakeBallBlock()
+    {
+        GameObject ballBlock = Instantiate(makeBallBlock,
+                                   steamVR.transform.position +
+                                   new Vector3(2.828087f, -2.27291f, -1.3185f),
+                                   new Quaternion());
+
+        ballBlock.GetComponent<Animator>().SetTrigger("SpinIn");
+        // The block should be kinematic by some nature until the player grabs the block
+        // at which point it should switch to use gravity and interact like a normal object.
+        // this should be taken care of inside of the spawn ball block script.
+    }
+
+    private void spawnInteractableCountLoop()
     {
         GameObject countLoop = Instantiate(interactableCountLoop,
                                    steamVR.transform.position +
                                    new Vector3(2.328087f, -2.27291f, -1.7185f),
+                                   new Quaternion());
+
+        countLoop.GetComponent<Animator>().SetTrigger("FlipIn");
+    }
+
+        private void spawnShiftedInteractableCountLoop()
+    {
+        GameObject countLoop = Instantiate(interactableCountLoop,
+                                   steamVR.transform.position +
+                                   new Vector3(1.728087f, -2.27291f, -1.3185f),
                                    new Quaternion());
 
         countLoop.GetComponent<Animator>().SetTrigger("FlipIn");
@@ -242,7 +265,9 @@ public class forceAnimation : MonoBehaviour {
                 tayAISpeechBubble.changeTextWithEffect("Now write a program on your own that makes 2 foxes in the run area.");
                 playVoiceRecording("20");
                 GameObject.FindGameObjectWithTag("Compile").GetComponent<objectSpawner>().spawnCount = 2;
-                GameObject.FindGameObjectWithTag("Compile").GetComponent<objectSpawner>().spawnObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/CALObjects/Foxes/Brown Fox.prefab", typeof(GameObject));;
+                GameObject.FindGameObjectWithTag("Compile").GetComponent<objectSpawner>().spawnObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/CALObjects/Foxes/Brown Fox.prefab", typeof(GameObject));
+                Invoke("spawnShiftedInteractableCountLoop", 1.2f);
+                Invoke("spawnShiftedMakeBallBlock", 1.4f);
                 break;
         }
     }

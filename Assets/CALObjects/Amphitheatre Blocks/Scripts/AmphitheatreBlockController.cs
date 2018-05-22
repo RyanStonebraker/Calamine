@@ -14,6 +14,7 @@ public class AmphitheatreBlockController : MonoBehaviour {
 
   public bool infiniteSpawn = true;
   public bool scaleToBlock = true;
+  public bool unusedDelete = true;
 
   private Transform startParent;
 
@@ -21,7 +22,8 @@ public class AmphitheatreBlockController : MonoBehaviour {
       Vector3 center = GetComponent<Renderer>().bounds.center + shiftCenter;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
       // block.transform.parent = gameObject.transform;
-      block.AddComponent<UnusedDelete>();
+      if (unusedDelete)
+        block.AddComponent<UnusedDelete>();
       Bounds thisBound = GetComponent<Renderer>().bounds;
       Bounds iconBound = block.GetComponent<Collider>().bounds;
 
