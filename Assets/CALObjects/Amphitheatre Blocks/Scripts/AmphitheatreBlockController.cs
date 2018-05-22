@@ -19,7 +19,7 @@ public class AmphitheatreBlockController : MonoBehaviour {
   void loadPrefabBlock () {
       Vector3 center = GetComponent<Renderer>().bounds.center + shiftCenter;
       block = Instantiate(blockIcon, center, sourceBlock.transform.rotation) as GameObject;
-      block.transform.parent = gameObject.transform;
+      // block.transform.parent = gameObject.transform;
       block.AddComponent<UnusedDelete>();
       Bounds thisBound = GetComponent<Renderer>().bounds;
       Bounds iconBound = block.GetComponent<Collider>().bounds;
@@ -50,19 +50,19 @@ public class AmphitheatreBlockController : MonoBehaviour {
     startParent.parent.GetComponent<Animator>().enabled = true;
     Destroy(startParent.parent.gameObject, 0.9f);
   }
-  
+
   void OnTriggerExit(Collider other) {
         if (block && other.gameObject.GetInstanceID() == block.GetInstanceID())
         {
-            if (gameObject.transform.parent == startParent) {
-              Vector3 childPos = block.transform.position;
-              block.transform.SetParent(startParent.parent);
-            }
+            // if (gameObject.transform.parent == startParent) {
+            //   Vector3 childPos = block.transform.position;
+            //   block.transform.SetParent(startParent.parent);
+            // }
             other.transform.localScale = sourceBlock.transform.localScale;
             if (infiniteSpawn)
               loadPrefabBlock();
             else {
-              Invoke("exitSpinOut", 1.5f);
+              Invoke("exitSpinOut", 3f);
               block = null;
             }
         }
