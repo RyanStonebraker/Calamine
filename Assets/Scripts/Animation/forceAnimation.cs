@@ -111,7 +111,6 @@ public class forceAnimation : MonoBehaviour {
         // this should be taken care of inside of the spawn ball block script.
     }
 
-    // TODO (Tristan): In and ambient animation
     private void spawnInteractableCountLoop() 
     {
         GameObject countLoop = Instantiate(interactableCountLoop,
@@ -122,7 +121,6 @@ public class forceAnimation : MonoBehaviour {
         countLoop.GetComponent<Animator>().SetTrigger("FlipIn");
     }
 
-    // TODO (Tristan): In and ambient animation
     private void spawnStartBlock()
     {
         GameObject spawnedStartBlock = Instantiate(startBlock,

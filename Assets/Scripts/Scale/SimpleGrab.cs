@@ -78,6 +78,8 @@ public class SimpleGrab : MonoBehaviour {
 
     private void grabObject()
     {
+
+
         objectInHand = collidingObject;
         collidingObject = null;
 
@@ -136,6 +138,13 @@ public class SimpleGrab : MonoBehaviour {
         //objectInHand.transform.position = transform.position;
         if (Controller.GetHairTriggerDown())
         {
+            Rigidbody collidingRigidbody = collidingObject.GetComponent<Rigidbody>();
+            if (collidingObject.tag == "FlowOfControl" && !collidingRigidbody.useGravity)
+            {
+                collidingRigidbody.useGravity = true;
+                collidingRigidbody.isKinematic = false;
+            }
+
             if (collidingObject)
                 grabObject();
 

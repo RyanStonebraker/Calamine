@@ -237,8 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22514b9269c8a3343b77e1ea81e738d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceBlock: {fileID: 1221488084043206, guid: 11398a1f6864e8840bd47ce94dabb47c,
+  sourceBlock: {fileID: 1892540215060110, guid: 2b16b17139084044dbd9ee6ef5de8296,
     type: 2}
   scaleFactor: 1
   shiftCenter: {x: 0, y: 0, z: 0.12}
   infiniteSpawn: 0
+  scaleToBlock: 1

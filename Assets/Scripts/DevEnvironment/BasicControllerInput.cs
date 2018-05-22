@@ -14,7 +14,7 @@ public class BasicControllerInput : MonoBehaviour {
     private SteamVR_TrackedObject trackedObj;
 
     //device property used to link the controller (via index) and return the controller's input
-    private SteamVR_Controller.Device Controller 
+    public SteamVR_Controller.Device Controller 
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
