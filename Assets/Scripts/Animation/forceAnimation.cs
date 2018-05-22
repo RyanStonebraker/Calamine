@@ -241,6 +241,8 @@ public class forceAnimation : MonoBehaviour {
             case 18:
                 tayAISpeechBubble.changeTextWithEffect("Now write a program on your own that makes 2 foxes in the run area.");
                 playVoiceRecording("20");
+                GameObject.FindGameObjectWithTag("Compile").GetComponent<objectSpawner>().spawnCount = 2;
+                GameObject.FindGameObjectWithTag("Compile").GetComponent<objectSpawner>().spawnObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/CALObjects/Foxes/Brown Fox.prefab", typeof(GameObject));;
                 break;
         }
     }
