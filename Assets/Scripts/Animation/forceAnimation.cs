@@ -102,7 +102,7 @@ public class forceAnimation : MonoBehaviour {
     {
         GameObject ballBlock = Instantiate(makeBallBlock,
                                    steamVR.transform.position +
-                                   new Vector3(1.528087f, -2.27291f, -1.7185f),
+                                   new Vector3(2.328087f, -2.27291f, -1.7185f),
                                    new Quaternion());
 
         ballBlock.GetComponent<Animator>().SetTrigger("SpinIn");
@@ -116,7 +116,7 @@ public class forceAnimation : MonoBehaviour {
     {
         GameObject countLoop = Instantiate(interactableCountLoop,
                                    steamVR.transform.position +
-                                   new Vector3(1.528087f, -2.27291f, -1.7185f),
+                                   new Vector3(2.328087f, -2.27291f, -1.7185f),
                                    new Quaternion());
 
         countLoop.GetComponent<Animator>().SetTrigger("FlipIn");
@@ -127,7 +127,7 @@ public class forceAnimation : MonoBehaviour {
     {
         GameObject spawnedStartBlock = Instantiate(startBlock,
                                    steamVR.transform.position +
-                                   new Vector3(1.528087f, -2.27291f, -1.7185f),
+                                   new Vector3(2.428087f, -2.27291f, -1.7185f),
                                    new Quaternion());
 
         spawnedStartBlock.GetComponent<Animator>().SetTrigger("SpawnInTwitch");
