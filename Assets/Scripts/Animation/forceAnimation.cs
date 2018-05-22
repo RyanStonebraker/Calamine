@@ -250,6 +250,11 @@ public class forceAnimation : MonoBehaviour {
     }
 
     // Update is called once per frame
+    private bool buttonCoolDown = true;
+
+    private void resetCoolDown() {
+        buttonCoolDown = true;
+    }
     void Update () {
         if (Input.GetKeyDown(KeyCode.F))
             sit();
@@ -269,7 +274,10 @@ public class forceAnimation : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Y))
             spawnMakeBallBlock();
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || trackedController.padPressed)
+        if (buttonCoolDown && Input.GetKeyDown(KeyCode.RightArrow) || trackedController.padPressed) {
+            buttonCoolDown = false;
+            Invoke("resetCoolDown", 1.0f);
             animateNextScene();
+        }
     }
 }

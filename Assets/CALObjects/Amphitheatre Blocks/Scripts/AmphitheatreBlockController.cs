@@ -13,6 +13,7 @@ public class AmphitheatreBlockController : MonoBehaviour {
   public Vector3 shiftCenter;
 
   public bool infiniteSpawn = true;
+  public bool scaleToBlock = true;
 
   private Transform startParent;
 
@@ -34,8 +35,9 @@ public class AmphitheatreBlockController : MonoBehaviour {
   void Start () {
     startParent = gameObject.transform.parent;
     blockIcon = Instantiate (sourceBlock, new Vector3(-100,-100,-100), new Quaternion(0,0,0,0));
-    blockIcon.transform.parent = gameObject.transform.parent;
-    blockIcon.transform.localScale = new Vector3(blockIcon.transform.localScale.x * scaleFactor, blockIcon.transform.localScale.y * scaleFactor, blockIcon.transform.localScale.z * scaleFactor);
+    // blockIcon.transform.parent = gameObject.transform.parent;
+    if (scaleToBlock)
+      blockIcon.transform.localScale = new Vector3(blockIcon.transform.localScale.x * scaleFactor, blockIcon.transform.localScale.y * scaleFactor, blockIcon.transform.localScale.z * scaleFactor);
     loadPrefabBlock();
   }
 
@@ -58,7 +60,8 @@ public class AmphitheatreBlockController : MonoBehaviour {
             //   Vector3 childPos = block.transform.position;
             //   block.transform.SetParent(startParent.parent);
             // }
-            other.transform.localScale = sourceBlock.transform.localScale;
+            if (scaleToBlock)
+              other.transform.localScale = sourceBlock.transform.localScale;
             if (infiniteSpawn)
               loadPrefabBlock();
             else {
