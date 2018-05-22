@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23599965053817968}
   - component: {fileID: 114490575091953436}
   - component: {fileID: 95083303341023346}
+  - component: {fileID: 114445327859372128}
   m_Layer: 0
   m_Name: StartBlockCompileAndRun
   m_TagString: Untagged
@@ -92,7 +93,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441521991812926}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -114,6 +115,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114445327859372128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441521991812926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28fa9fdfeb62245139f8038867f65b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnObject: {fileID: 1127684178497260, guid: 94b687cb9e32e1044becf9aa17d0bf78,
+    type: 2}
+  spawnObjectDim: 0.75
+  spawnHeight: 20
+  spawnCount: 20
+  playArea: {fileID: 0}
+  spawnedObjects: []
 --- !u!114 &114490575091953436
 MonoBehaviour:
   m_ObjectHideFlags: 1
