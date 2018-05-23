@@ -41,6 +41,8 @@ TagManager:
   - FlowOfControl
   - PlayArea
   - Compile
+  - LoopBody
+  - Statement
   layers:
   - Default
   - TransparentFX
