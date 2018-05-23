@@ -9,11 +9,20 @@ public class LoopBodyInteraction : MonoBehaviour {
     public Material occupiedBodyMat;
     private bool lerp = false;
 
+    private string truncateCloneSuffix(string gameObjectName)
+    {
+        string temp = gameObjectName;
+        while (temp.Contains("("))
+            temp = temp.Substring(0, temp.Length - 2);
+
+        return temp;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Statement")
         {
-            bodyText.text = other.name;
+            bodyText.text = /*other.name;*/ truncateCloneSuffix(other.name);
             lerp = true;
             gameObject.GetComponent<Renderer>().material = occupiedBodyMat;
             Destroy(other.gameObject);
